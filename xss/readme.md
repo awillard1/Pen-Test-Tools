@@ -9,15 +9,6 @@ You shall not misuse the information to gain unauthorized access and/or write ma
 
 These information shall only be used to expand knowledge and not for causing malicious or damaging attacks.
 
-Open Redirect
-==============
-
-/?SomeParam=https://TheDomainYouAreOne&TheirParam=javascript://prompt(1)
-
-/?SomeParam=https://TheDomainYouAreOne&TheirParam=mailto://SomeoneEvil@SOMEDOMAIN?Subject=How about that!%26Body=Please send me credentials
-
-/?SomeParam=https://TheDomainYouAreOne&TheirParam=https://www.google.com
-
 Did you break out of a tag and script, iframe, img, a, &gt; etc are all blocked?
 ==============
 
