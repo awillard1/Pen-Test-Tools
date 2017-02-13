@@ -7,7 +7,7 @@ WAF Got You Down or Certain Tags Stripped?
 
 /?SomeParam=https://TheDomainYouAreOne&TheirParam=https://www.google.com
 
-Did you break the tag for script, iframe, img, a etc are all blocked?
+Did you break out of a tag for and script, iframe, img, a etc are all blocked?
 ==============
 
 Did they block onerror onload onclick? Try something like this:
