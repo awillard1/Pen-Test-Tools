@@ -28,6 +28,27 @@
                 return results[1];
             }
         }
+		
+		function CopyToClipboard(src) 
+		{ 
+			var t = document.createElement("textarea");
+			t.style.display = "hidden";
+			t.value = document.getElementById(src).value;
+			t.id = 'cpy';
+			document.body.appendChild(t);
+			var range = document.createRange();
+			range.selectNode(t);
+			t.select();
+			window.getSelection().addRange(range);
+			try {
+				var success = document.execCommand('copy');
+			} 
+			catch (err) {
+				 alert('unable to copy');
+			}
+			document.body.removeChild(t);
+			return success;
+		}
 
         function showPassword() {
         document.body.innerHTML=
@@ -232,7 +253,7 @@
         }
         #leftPanel
         {
-        	width: 50%;
+        	width: 75%;
         	float: left;
 			display:block;
 			padding-right:5px;
@@ -263,7 +284,7 @@
         <h3>Input/Output Testing</h3>
         <p>Use this form to test valid and invalid inputs into the application.</p>
         <h4>Input</h4>
-        <textarea name="UserInputText" cols="75" rows="7"></textarea>
+        <textarea name="UserInputText" id="UserInputText" cols="75" rows="7"></textarea>
         <br />
         <p>
           <a class='fakeButton' href="#" onclick="executeEncodeBase64();">Encode to base64</a>&nbsp;
@@ -278,12 +299,14 @@
         </p>
         <p>
           <a class='fakeButton' href="#" onclick="escapeAllText()">Escape All Text</a>
+		  <a class='fakeButton' href="#" onclick="CopyToClipboard('UserInputText');">Copy</a>
         </p>
         <h4>Result</h4>
-        <textarea name="ModifiedText" cols="75" rows="7"></textarea>
+        <textarea name="ModifiedText" id="ModifiedText" cols="75" rows="7"></textarea>
         <br />
         <p>
           <a class='fakeButton' href="#" onclick="executeCopyResult();">Move Result to Input</a>
+		  <a class='fakeButton' href="#" onclick="CopyToClipboard('ModifiedText');">Copy</a>
         </p>
       </div>
     </div>
