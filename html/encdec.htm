@@ -1,0 +1,292 @@
+﻿<html>
+<head>
+<meta charset="utf-8"/>
+    <title>Tools for Input Validation</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src="jquery-ui-1.9.2.custom/development-bundle/ui/jquery.ui.core.js"></script>
+
+    <script type="text/javascript" language="javascript">
+  	<!--
+
+  	    function print_error(error_msg) {
+	        var log = '<span style="color:red;">' + error_msg + '</span><br/>';
+	        $('#loginError').empty();
+	        $('#loginError').append(log);
+	        $('#loginError').show();
+	}
+
+        function getParameter(paramId) {
+        alert(paramId);
+            paramId = paramId.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + paramId + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(window.location.href);
+            if (results == null) {
+                return "";
+            }
+            else {
+                return results[1];
+            }
+        }
+
+        function showPassword() {
+        document.body.innerHTML=
+            document.getElementById("clearTextPassword").innerText = document.getElementById("password").value;
+        }
+        function setLocationForCookie() {
+            document.cookie = "myCookie=Cookie Monster";
+            document.location = "javascript:alert(document.cookie)";
+        }
+
+        var keyStr = "ABCDEFGHIJKLMNOP" +
+               "QRSTUVWXYZabcdef" +
+               "ghijklmnopqrstuv" +
+               "wxyz0123456789+/" +
+               "=";
+
+        function encode64(input) {
+            input = escape(input);
+            var output = "";
+            var chr1, chr2, chr3 = "";
+            var enc1, enc2, enc3, enc4 = "";
+            var i = 0;
+
+            do {
+                chr1 = input.charCodeAt(i++);
+                chr2 = input.charCodeAt(i++);
+                chr3 = input.charCodeAt(i++);
+
+                enc1 = chr1 >> 2;
+                enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+                enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+                enc4 = chr3 & 63;
+
+                if (isNaN(chr2)) {
+                    enc3 = enc4 = 64;
+                } else if (isNaN(chr3)) {
+                    enc4 = 64;
+                }
+
+                output = output +
+           keyStr.charAt(enc1) +
+           keyStr.charAt(enc2) +
+           keyStr.charAt(enc3) +
+           keyStr.charAt(enc4);
+                chr1 = chr2 = chr3 = "";
+                enc1 = enc2 = enc3 = enc4 = "";
+            } while (i < input.length);
+
+            return output;
+        }
+
+        function decode64(input) {
+            var output = "";
+            var chr1, chr2, chr3 = "";
+            var enc1, enc2, enc3, enc4 = "";
+            var i = 0;
+
+            // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
+            var base64test = /[^A-Za-z0-9\+\/\=]/g;
+            if (base64test.exec(input)) {
+                alert("There were invalid base64 characters in the input text.\n" +
+              "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
+              "Expect errors in decoding.");
+            }
+            input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+            do {
+                enc1 = keyStr.indexOf(input.charAt(i++));
+                enc2 = keyStr.indexOf(input.charAt(i++));
+                enc3 = keyStr.indexOf(input.charAt(i++));
+                enc4 = keyStr.indexOf(input.charAt(i++));
+
+                chr1 = (enc1 << 2) | (enc2 >> 4);
+                chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+                chr3 = ((enc3 & 3) << 6) | enc4;
+
+                output = output + String.fromCharCode(chr1);
+
+                if (enc3 != 64) {
+                    output = output + String.fromCharCode(chr2);
+                }
+                if (enc4 != 64) {
+                    output = output + String.fromCharCode(chr3);
+                }
+
+                chr1 = chr2 = chr3 = "";
+                enc1 = enc2 = enc3 = enc4 = "";
+
+            } while (i < input.length);
+            return unescape(output);
+        }
+
+        function unescapeString(str) {
+            try {
+                var div = document.createElement('div');
+                div.innerHTML = str;
+                return div.firstChild.data;
+            }
+            catch (ex) {
+                return "";
+            }
+        }
+
+        function escapeHTMLEncode(str) {
+            var div = document.createElement('div');
+            var text = document.createTextNode(str);
+            div.appendChild(text);
+            return div.innerHTML;
+        }
+
+        function executeHtmlDecode() {
+            document.base64Form.ModifiedText.value = unescapeString(document.base64Form.UserInputText.value);
+        }
+
+        function executeHtmlEncode() {
+            document.base64Form.ModifiedText.value = escapeHTMLEncode(document.base64Form.UserInputText.value);
+        }
+
+        function executeEncodeUriComponent() {
+            document.base64Form.ModifiedText.value = encodeURIComponent(document.base64Form.UserInputText.value);
+        }
+
+        function executeUrlUnescape() {
+            document.base64Form.ModifiedText.value = unescape(document.base64Form.UserInputText.value);
+        }
+
+        function executeUrlEscape() {
+            document.base64Form.ModifiedText.value = escape(document.base64Form.UserInputText.value);
+        }
+
+        function executeDecodeBase64() {
+            document.base64Form.ModifiedText.value = decode64(document.base64Form.UserInputText.value);
+        }
+
+        function executeEncodeBase64() {
+            document.base64Form.ModifiedText.value = encode64(document.base64Form.UserInputText.value);
+        }
+
+        function executeCopyResult() {
+            document.base64Form.UserInputText.value = document.base64Form.ModifiedText.value;
+        }
+
+	function escapeAllText(){
+	var os = document.base64Form.UserInputText.value;
+	var ns='';
+	var t;
+	var chr='';
+	var cc='';
+	var tn='';
+	for(i=0;i<256;i++){
+		tn=i.toString(16);
+		if(tn.length<2)tn="0"+tn;
+		cc+=tn;
+		chr+=unescape('%'+tn);
+	}
+	cc=cc.toUpperCase();
+	os.replace(String.fromCharCode(13)+'',"%13");
+	for(q=0;q<os.length;q++){
+		t=os.substr(q,1);
+		for(i=0;i<chr.length;i++){
+			if(t==chr.substr(i,1)){
+				t=t.replace(chr.substr(i,1),"%"+cc.substr(i*2,2));
+				i=chr.length;
+			}
+		}
+	ns+=t;
+	}
+	 document.base64Form.ModifiedText.value = ns;
+}
+
+
+  //--></script>
+
+    <style type="text/css">
+        body
+        {
+            font-family: verdana;
+            font-size: 11px;
+        }
+        .fakeButton
+        {
+            border: 1px solid black;
+            padding: 4px;
+            color: black;
+            background-color: InfoBackground;
+        }
+        h4
+        {
+            font-size:1.05em;
+        }
+        h3
+        {
+            border-bottom: 1px solid black;
+            color:gray;
+        }
+        .code
+        {
+            margin:5;
+            border:dashed 1px gray;
+            background-color:#F9F9F9;
+            padding:20;
+        }
+        #leftPanel
+        {
+        	width: 50%;
+        	float: left;
+			display:block;
+			padding-right:5px;
+        }
+        #rightPanel
+        {
+        	width:50%
+        	height: 100%;
+        	position:relative;
+        	display: block;
+        	overflow: visible;
+        	float:left;
+        	border-left: solid 1px black;
+        	padding-left:5px;
+        }
+        #otherAttacks
+        {
+        display:block;
+        float:left;
+        width:100%;
+        }
+    </style>
+</head>
+<body>
+  <form name="base64Form">
+    <div>
+      <div id="leftPanel">
+        <h3>Input/Output Testing</h3>
+        <p>Use this form to test valid and invalid inputs into the application.</p>
+        <h4>Input</h4>
+        <textarea name="UserInputText" cols="75" rows="7"></textarea>
+        <br />
+        <p>
+          <a class='fakeButton' href="#" onclick="executeEncodeBase64();">Encode to base64</a>&nbsp;
+          <a class='fakeButton' href="#" onclick="executeDecodeBase64(); return false;">Decode from base64</a>&nbsp;
+          <a class='fakeButton' href="#" onclick="executeUrlEscape();">Url Escape</a>&nbsp;
+          <a class='fakeButton' href="#" onclick="executeUrlUnescape();">Url Unescape</a>&nbsp;
+          <a class='fakeButton' href="#" onclick="executeEncodeUriComponent();">Encode URI Component</a>
+        </p>
+        <p>
+          <a class='fakeButton' href="#" onclick="executeHtmlEncode();">Html Encode</a>
+          <a class='fakeButton' href="#" onclick="executeHtmlDecode();">Html Decode</a>
+        </p>
+        <p>
+          <a class='fakeButton' href="#" onclick="escapeAllText()">Escape All Text</a>
+        </p>
+        <h4>Result</h4>
+        <textarea name="ModifiedText" cols="75" rows="7"></textarea>
+        <br />
+        <p>
+          <a class='fakeButton' href="#" onclick="executeCopyResult();">Move Result to Input</a>
+        </p>
+      </div>
+    </div>
+  </form>
+</body>
+</html>
