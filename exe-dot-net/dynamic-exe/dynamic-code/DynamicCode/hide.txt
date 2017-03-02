@@ -1,0 +1,35 @@
+﻿//BadMojo.dll "BadMojo.BiteMe, BadMojo" DoWork
+            //if (vm.isVirtualMachine())
+            //    return;
+            //if (args.Length == 3)
+            //{
+            //    if (string.IsNullOrEmpty(args[0]))
+            //        return;
+            //    if (string.IsNullOrEmpty(args[1]))
+            //        return;
+            //    if (string.IsNullOrEmpty(args[2]))
+            //        return;
+
+            //    string x = args[0]; string y = args[1]; string z = args[2];
+            //    Assembly t = System.Reflection.Assembly.LoadFrom(x);
+            //    dynamic o = Activator.CreateInstance(Type.GetType(y, true));
+            //    MethodInfo method = o.GetType().GetMethod(z);
+            //    method.Invoke(o, null);
+            //}      
+
+
+			      namespace BadMojo
+{
+    public class BiteMe
+    {
+    public static void Main(string[] args)
+    {DoWork();}
+        public BiteMe()
+        {
+        }
+        public static void DoWork()
+        {
+            System.Diagnostics.Process.Start("https://www.google.com");
+        }
+    }
+}
