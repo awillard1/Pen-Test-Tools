@@ -4,3 +4,7 @@ When you can pass certain characters but not ; or you can't %0D or %0A try:
 <script>
 var a = 'a'/**/*prompt(123)//
 </script>
+
+
+The final version to exploit the area was based on the following:
+a/'/**/*prompt(123)/**/*'
