@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE description [<!ELEMENT description ANY><!ENTITY inc SYSTEM "file:///etc/passwd">]>
 <Module>
     <ModulePrefs title="__MSG_gadget.burndown.title__" author="__MSG_gadget.burndown.author__" directory_title="__MSG_gadget.burndown.title__"
                  description="__MSG_gadget.burndown.description__"
                  thumbnail='https://localhost/s/en_USyzyusi/64029/309/1.4/_/download/resources/com.artezio.artjiraboard.jira-burndown:art-burndown-chart-resource/thumbnail'>
         <Optional feature="gadget-directory">
             <Param name="categories">
-                &inc;
+                Param&amp;lta&amp;gt;asdf
             </Param>
         </Optional>
         <Optional feature="atlassian.util"/>
