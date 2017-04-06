@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE description [<!ELEMENT description ANY><!ENTITY asw SYSTEM "file:///etc/passwd">]>
-<?xml version="1.0" encoding="UTF-8"?>
 <testsuites duration="3.702">
     <testsuite failures="0" name="Cow can moo" package="tests/testcase" tests="2" time="0.104">&asw;
         <testcase classname="tests/testcase" name="Subject equals the expected value" time="0.104"/>
