@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace AppInv
 {
@@ -14,8 +15,16 @@ namespace AppInv
         [DataMember]
         public string MacAddress { get; set; }
     }
+
+    [DataContract]
+    public class LastVisitedPidlMRU
+    {
+        [DataMember]
+        public string data { get; set; }
+    }
     public static class RegistryHelper
     {
+        private const string pid = @"Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRU";
         private const string wirelessNetworkKey = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged";
         public static List<WirelessNetwork> GetWirelessNetworks()
         {
@@ -52,7 +61,47 @@ namespace AppInv
             return n;
         }
 
-        public static RegistryKey GetRegistryKey()
+        public static List<LastVisitedPidlMRU> GetPid()
+        {
+            List<LastVisitedPidlMRU> n = new List<LastVisitedPidlMRU>();
+            try
+            {
+                RegistryKey key = RegistryHelper.GetRegistryKeyCU(pid);
+
+                foreach (string k in key.GetValueNames())
+                {
+                    object item = key.GetValue(k);
+                    LastVisitedPidlMRU w = new LastVisitedPidlMRU();
+                    StringBuilder sb = new StringBuilder();
+                    if (null != item)
+                    {
+                        object _data = item;
+                        if (null != _data)
+                        {
+                            byte[] data = (byte[])_data;
+                            string binary = System.Text.Encoding.Unicode.GetString(data);
+                            binary = Regex.Replace(binary, @"[^\u0020-\u007F]+", string.Empty);
+                            w.data = binary;
+                            n.Add(w);
+                        }
+                    }
+                }
+            }
+            catch { }
+            return n;
+        }
+
+        private static StringBuilder convertToAscii(string hexString)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hexString.Length; i += 2)
+            {
+                string hs = hexString.Substring(i, 2);
+                sb.Append(Convert.ToChar(Convert.ToUInt32(hs, 16)));
+            }
+            return sb; 
+        }
+    public static RegistryKey GetRegistryKey()
         {
             return GetRegistryKey(null);
         }
@@ -68,6 +117,19 @@ namespace AppInv
             return string.IsNullOrEmpty(keyPath)
                 ? localMachineRegistry
                 : localMachineRegistry.OpenSubKey(keyPath);
+        }
+
+        public static RegistryKey GetRegistryKeyCU(string keyPath)
+        {
+            RegistryKey cuRegistry
+                = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser,
+                                          Environment.Is64BitOperatingSystem
+                                              ? RegistryView.Registry64
+                                              : RegistryView.Registry32);
+
+            return string.IsNullOrEmpty(keyPath)
+                ? cuRegistry
+                : cuRegistry.OpenSubKey(keyPath);
         }
 
         public static object GetRegistryValue(string keyPath, string keyName)

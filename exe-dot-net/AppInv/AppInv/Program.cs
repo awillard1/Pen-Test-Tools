@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Net.NetworkInformation;
 using System.Text;
 
 namespace AppInv
@@ -14,6 +11,7 @@ namespace AppInv
             string d = DriveMappings.GetDriveMappings().JSONSerialize();
             string nsJSON = NetStat.NetStatJSON();
             string w = RegistryHelper.GetWirelessNetworks().JSONSerialize();
+            string f = RegistryHelper.GetPid().JSONSerialize();
             string p = AppProcesses.GetProcs();
             string i = NetworkInterfaces.GetInterfaces();
             string username = UserInformation.GetUserName().JSONSerialize();
@@ -24,6 +22,8 @@ namespace AppInv
             x.Append("---Processes---" + Environment.NewLine + p + Environment.NewLine + Environment.NewLine);
             x.Append("---NetworkInterfaces---" + Environment.NewLine + i + Environment.NewLine + Environment.NewLine);
             x.Append("---UserName---" + Environment.NewLine + username + Environment.NewLine + Environment.NewLine);
+            x.Append("---LastVisitedPidlMRU---" + Environment.NewLine + f + Environment.NewLine + Environment.NewLine);
+
             using (TextWriter writer = File.CreateText("data.txt"))
             {
                 writer.Write(x.ToString());
