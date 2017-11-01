@@ -32,4 +32,8 @@ What if they are in a function? Break out of it. Count the brackets, etc to kill
 
 "};prompt(1);//
 
+You may need to reconstruct the function
+
+"};prompt(1);function whatever(){//
+
 Don't forget %0D%0A if you need a new line
