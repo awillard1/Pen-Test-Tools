@@ -84,3 +84,25 @@ Just for fun
 Internet Explorer can be your friend
 ==============
 A lot of times you will notice that " or ' has become %22 or %27 in Chrome, Firefox, Opera etc. But did you try Internet Explorer. Many times you can get an Internet Explorer only XSS due to how the browser works.
+
+Just a few things to remember
+==============
+```
+%3c -- <
+%3e -- >
+%2b -- + (this is important for sql injection)
+%26%2360; -- <
+%26%2362; -- >
+\u003C -- <
+\x27 -- '
+%26lt; or %26lt -- <
+%26gt; or %26gt -- >
+```
+Double Encoding Example
+```
+%253c
+```
+Triple Encoding
+```
+%25253c
+```
