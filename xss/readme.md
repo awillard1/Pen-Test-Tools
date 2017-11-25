@@ -55,6 +55,13 @@ var a = 'a'*prompt(123)*'a';
 var b = "a"*prompt(456)*"a";
 </script>
 ```
+```
+http://yourtarget/whatever?a=<a &a= onclick=prompt(123) &a= >adsf
+```
+That would render potentially
+```html
+<a , onclick=prompt(123) , >asdf
+```
 Event Handlers You Should Investigate to bypass WAF
 ==============
 https://www.w3.org/TR/html52/single-page.html
