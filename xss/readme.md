@@ -33,6 +33,11 @@ Don't forget the injection might not be a form tag but in the javascript.
 ";prompt(1);//
 
 ';prompt(1);//
+
+<script>
+var a = 'a'*prompt(123)*'a';
+var b = "a"*prompt(456)*"a";
+</script>
 ```
 
 What if they are in a function? Break out of it. Count the brackets, etc to kill the function.
