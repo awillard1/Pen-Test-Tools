@@ -27,6 +27,7 @@ WAF got you down? There are a ton of bypasses, look at HTML5 for more ideas also
 <details open ontoggle="prompt('xss via toggle')">Toggle Me For More prompts</details>
 <video onmouseenter=prompt(123)>
 ```
+Here you will find a great resource: https://html5sec.org/
 
 Don't forget the injection might not be a form tag but in the javascript.
 ==============
