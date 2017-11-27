@@ -12,7 +12,7 @@ These information shall only be used to expand knowledge and not for causing mal
 Did you break out of a tag and script, iframe, img, a, &gt; etc are all blocked?
 ==============
 
-Did they block onerror onload onclick? Try something like this:
+Did they block onerror onload onclick? It is important to remember that the basic events work even with elements not part of html. Try something like this:
 ```html
 <XXXXXXX ondblclick=prompt(1)>Some Text, Don't even care to end the tag either.
 ```
