@@ -9,7 +9,7 @@ You shall not misuse the information to gain unauthorized access and/or write ma
 
 These information shall only be used to expand knowledge and not for causing malicious or damaging attacks.
 
-Did you break out of a tag and script, iframe, img, a, &gt; etc are all blocked?
+Did you break out of a tag and script, iframe, img, a, etc are all blocked by the WAF?
 ==============
 
 Did they block onerror onload onclick? It is important to remember that the basic events work even with elements not part of html. Try something like this:
