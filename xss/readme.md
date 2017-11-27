@@ -90,6 +90,12 @@ Internet Explorer can be your friend
 ==============
 A lot of times you will notice that " or ' has become %22 or %27 in Chrome, Firefox, Opera etc. But did you try Internet Explorer. Many times you can get an Internet Explorer only XSS due to how the browser works.
 
+Interesting HTML Concepts
+==============
+```html
+<xxxxxx onmouseover=confirm(/Mouse&nbsp;Test&nbsp;It/.source)>Example 123
+
+```
 Just a few things to remember
 ==============
 ```
