@@ -1,0 +1,12 @@
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\bin\Debug\GetUserCreds.exe.config
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\bin\Debug\GetUserCreds.exe
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\bin\Debug\GetUserCreds.pdb
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\bin\Debug\System.Data.SQLite.dll
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\bin\Debug\System.Data.SQLite.xml
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\obj\Debug\GetUserCreds.csprojResolveAssemblyReference.cache
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\obj\Debug\GetUserCreds.TakeCreds.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\obj\Debug\GetUserCreds.Properties.Resources.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\obj\Debug\GetUserCreds.csproj.GenerateResource.Cache
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\obj\Debug\GetUserCreds.csproj.CoreCompileInputs.cache
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\obj\Debug\GetUserCreds.exe
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\getFirefoxCreds\GetUserCreds\GetUserCreds\obj\Debug\GetUserCreds.pdb
