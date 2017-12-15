@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B30ECFE-0041-4D7F-AE3E-3B72EE52B3F1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScanProjectManagement</RootNamespace>
+    <AssemblyName>ScanProjectManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutProduct.Designer.cs">
+      <DependentUpon>AboutProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewProjectForm.Designer.cs">
+      <DependentUpon>AddNewProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AuditViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuditViewer.Designer.cs">
+      <DependentUpon>AuditViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\BrowserLog.cs" />
+    <Compile Include="Business\CmdHelper.cs" />
+    <Compile Include="Business\configurationHelper.cs" />
+    <Compile Include="Business\Helpers.cs" />
+    <Compile Include="Business\IBrowserLog.cs" />
+    <Compile Include="Business\INmapLog.cs" />
+    <Compile Include="Business\IPAddress.cs" />
+    <Compile Include="Business\ISSHLog.cs" />
+    <Compile Include="Business\IVulnerability.cs" />
+    <Compile Include="Business\Logger.cs" />
+    <Compile Include="Business\MeetingInvite.cs" />
+    <Compile Include="Business\NmapLog.cs" />
+    <Compile Include="Business\projectHelper.cs" />
+    <Compile Include="Business\ProjectPOCO.cs" />
+    <Compile Include="Business\SSHLog.cs" />
+    <Compile Include="Business\SummaryObjects.cs" />
+    <Compile Include="Business\Users.cs" />
+    <Compile Include="Business\Vulnerabilities.cs" />
+    <Compile Include="Business\Vulnerability.cs" />
+    <Compile Include="Business\XMLHelpers.cs" />
+    <Compile Include="ImageData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageData.Designer.cs">
+      <DependentUpon>ImageData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metrics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metrics.Designer.cs">
+      <DependentUpon>Metrics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericPortTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PuttyLaunch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PuttyLaunch.Designer.cs">
+      <DependentUpon>PuttyLaunch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScanProjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScanProjectManager.Designer.cs">
+      <DependentUpon>ScanProjectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutProduct.resx">
+      <DependentUpon>AboutProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewProjectForm.resx">
+      <DependentUpon>AddNewProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuditViewer.resx">
+      <DependentUpon>AuditViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageData.resx">
+      <DependentUpon>ImageData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metrics.resx">
+      <DependentUpon>Metrics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PuttyLaunch.resx">
+      <DependentUpon>PuttyLaunch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScanProjectManager.resx">
+      <DependentUpon>ScanProjectManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="pentesttransform.xslt" />
+    <Content Include="projectData.xml" />
+    <Content Include="transform.xslt" />
+    <Content Include="weeklyreport.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)config.xml" "$(ProjectDir)$(OutDir)config.xml"
+copy "$(ProjectDir)transform.xslt" "$(ProjectDir)$(OutDir)transform.xslt"
+copy "$(ProjectDir)pentesttransform.xslt" "$(ProjectDir)$(OutDir)pentesttransform.xslt"
+copy "$(ProjectDir)weeklyreport.xslt" "$(ProjectDir)$(OutDir)weeklyreport.xslt"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

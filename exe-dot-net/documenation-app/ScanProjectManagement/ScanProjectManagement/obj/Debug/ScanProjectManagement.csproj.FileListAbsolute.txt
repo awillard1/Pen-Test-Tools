@@ -1,0 +1,16 @@
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.csprojResolveAssemblyReference.cache
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.AboutProduct.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.AddNewProjectForm.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.AuditViewer.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.ImageData.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.Metrics.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.PuttyLaunch.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.ScanProjectManager.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.csproj.GenerateResource.Cache
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\bin\Debug\ScanProjectManagement.exe.config
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\bin\Debug\ScanProjectManagement.exe
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\bin\Debug\ScanProjectManagement.pdb
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.Properties.Resources.resources
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.csproj.CoreCompileInputs.cache
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.exe
+C:\Users\awillard\Documents\GitHub\Pen-Test-Tools\exe-dot-net\documenation-app\ScanProjectManagement\ScanProjectManagement\obj\Debug\ScanProjectManagement.pdb

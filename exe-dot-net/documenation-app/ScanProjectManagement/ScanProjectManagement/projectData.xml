@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<projects>
+  <project>
+    <name><![CDATA[DemoProject v1.2.43]]></name>
+    <contacts>
+      <isso><![CDATA[Billy Madison]]></isso>
+      <devLead><![CDATA[Donald Duck]]></devLead>
+    </contacts>
+    <codeDetail isCurrentlyScanned="true" scanConfiguration="None">
+      <repository><![CDATA[https://somesvn.repository]]></repository>      
+    </codeDetail>
+    <codeAnalysis>
+        <scanDate><![CDATA[04/04/2014]]></scanDate>
+      <scanDate><![CDATA[05/04/2014]]></scanDate>
+      <scanDate><![CDATA[06/04/2014]]></scanDate>
+    </codeAnalysis>
+    <penetrationTests>
+      <scan>
+        <startDate><![CDATA[04/04/2014 11:30 PM]]></startDate>
+        <endDate><![CDATA[04/05/2014 03:00 AM]]></endDate>
+        <tester><![CDATA[To Be Determined]]></tester>
+      </scan>
+      <scan>
+        <startDate><![CDATA[05/04/2014 11:30 PM]]></startDate>
+        <endDate><![CDATA[05/05/2014 03:00 AM]]></endDate>
+        <tester><![CDATA[To Be Determined]]></tester>
+      </scan>
+    </penetrationTests>
+  </project>
+</projects>

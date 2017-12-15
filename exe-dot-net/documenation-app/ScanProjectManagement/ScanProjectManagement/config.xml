@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!-- YOU MUST CONFIGURE-->
+  <meetingInviteStorage><![CDATA[C:\data\meetings]]></meetingInviteStorage>
+  <userDetails>
+    <user>
+      <name><![CDATA[Your Name]]></name>
+      <email><![CDATA[YourEmail@example.com]]></email>
+    </user>
+  </userDetails>
+  <penetrationTesters>
+    <user>
+      <name><![CDATA[Adam Willard]]></name>
+      <email><![CDATA[a@example.com]]>No</email>
+    </user>
+  </penetrationTesters>
+  <!-- END MUST CONFIGURE-->
+  <programmingLanguages>
+    <item>Java</item>
+    <item>J#</item>
+    <item>C#</item>
+    <item>VB.Net</item>
+    <item>F#</item>
+    <item>Php</item>
+    <item>C/C++</item>
+    <item>PL/SQL</item>
+    <item>TSQL</item>
+    <item>JavaScript</item>
+    <item>VBScript</item>
+    <item>ASP</item>
+    <item>ColdFusion</item>
+    <item>ActionScript</item>
+    <item>Flash</item>
+    <item>Ruby</item>
+    <item>XML</item>
+    <item>XPATH</item>
+    <item>HTML</item>
+    <item>Python</item>
+  </programmingLanguages>
+  <documentation>
+    <category>
+      <item>Weekly Update</item>
+      <item>Meeting</item>
+      <item>Configuration</item>
+      <item>Information</item>
+      <item>Risk</item>
+      <item>E-Mail</item>
+    </category>
+  </documentation>
+  <vulnerability>
+    <item>
+      XSS
+    </item>
+    <item>
+      Injection
+    </item>
+    <item>
+      Authentication/Session Mgmt
+    </item>
+    <item>
+      Insecure Direct Object Reference
+    </item>
+    <item>
+      Security Misconfiguration
+    </item>
+    <item>
+      Missing Function Level Access Control
+    </item>
+    <item>
+      CSRF
+    </item>
+    <item>
+      Unpatched Components
+    </item>
+    <item>
+      Open Redirects/Forwards
+    </item>
+    <item>
+      Response Splitting
+    </item>
+    <item>
+      Other
+    </item>
+  </vulnerability>
+  <calendar>
+    <firstDayOfWeek>Thursday</firstDayOfWeek>
+  </calendar>
+</configuration>
