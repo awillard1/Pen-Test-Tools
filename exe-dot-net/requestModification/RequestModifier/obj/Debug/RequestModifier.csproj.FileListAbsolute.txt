@@ -1,0 +1,27 @@
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\bin\Debug\RequestModifier.exe
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\bin\Debug\RequestModifier.pdb
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\bin\Debug\System.Web.Http.dll
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\bin\Debug\System.Net.Http.dll
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\bin\Debug\System.Net.Http.Formatting.dll
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.csprojResolveAssemblyReference.cache
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.RequestModifierForm.resources
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.Properties.Resources.resources
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.csproj.GenerateResource.Cache
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.exe
+c:\users\adamwillard\documents\visual studio 2012\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.pdb
+D:\Projects\RequestModifier\RequestModifier\bin\Debug\RequestModifier.exe
+D:\Projects\RequestModifier\RequestModifier\bin\Debug\RequestModifier.pdb
+D:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.csprojResolveAssemblyReference.cache
+D:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.RequestModifierForm.resources
+D:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.Properties.Resources.resources
+D:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.csproj.GenerateResource.Cache
+D:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.exe
+D:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.pdb
+E:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.exe
+E:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.pdb
+E:\Projects\RequestModifier\RequestModifier\bin\Debug\RequestModifier.exe
+E:\Projects\RequestModifier\RequestModifier\bin\Debug\RequestModifier.pdb
+E:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.csprojResolveAssemblyReference.cache
+E:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.RequestModifierForm.resources
+E:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.Properties.Resources.resources
+E:\Projects\RequestModifier\RequestModifier\obj\Debug\RequestModifier.csproj.GenerateResource.Cache
