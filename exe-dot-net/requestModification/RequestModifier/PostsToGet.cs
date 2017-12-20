@@ -105,9 +105,9 @@ namespace RequestModifier
                 if (null != url)
                 {
                     html = string.Format(RequestMod.myUrlFormat, methodData, requestData);
-                    var xx = HttpUtility.HtmlEncode(methodData + "?" + requestData);
-                    Uri u = new Uri(xx);
-                    webBrowser1.DocumentText = "<body><h1>Test URL</h2><p>" + html + "<br/>" + xx + RequestMod.GetDetails(u);// +"</p></body>");
+                    Uri u = new Uri(methodData + "?" + requestData);
+
+                    webBrowser1.DocumentText = RequestMod.GetDetails(u,html);
                 }
                 this.Close();
             }
