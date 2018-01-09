@@ -1,0 +1,17 @@
+<HTA:APPLICATION
+	APPLICATIONNAME="Remote Assistance Client Utility"
+	BORDER="dialog"
+	ID="LDSupport"
+	SCROLL="no"
+	SINGLEINSTANCE="yes"
+	CAPTION="yes"
+	SYSMENU="yes"
+	SHOWINTASKBAR="yes"
+	contextMenu="no"
+	SELECTION="no"
+icon="">
+<script language="VBScript">
+Set objShell = CreateObject("WScript.Shell")
+strUser = objShell.ExpandEnvironmentStrings("%UserName%")
+MsgBox(strUser)
+</script>
