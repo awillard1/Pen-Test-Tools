@@ -1,2 +1,2 @@
-Set objShell = CreateObject("Wscript.shell")
+Set objShell = CreateObject("Wscript.Shell")
   objShell.run("powershell -noexit")
