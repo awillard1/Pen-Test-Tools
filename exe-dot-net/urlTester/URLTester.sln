@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLTester", "URLTester.URLBruteForcer\URLTester.csproj", "{B5D2188C-935B-47AF-B257-462169AD2B84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLTester.Business", "URLTester.Business\URLTester.Business.csproj", "{4DA132F6-BACD-4B9B-8033-51562B16D282}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5D2188C-935B-47AF-B257-462169AD2B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D2188C-935B-47AF-B257-462169AD2B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D2188C-935B-47AF-B257-462169AD2B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D2188C-935B-47AF-B257-462169AD2B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA132F6-BACD-4B9B-8033-51562B16D282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA132F6-BACD-4B9B-8033-51562B16D282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA132F6-BACD-4B9B-8033-51562B16D282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA132F6-BACD-4B9B-8033-51562B16D282}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {089C73D3-01AB-4533-A86C-0A829F36FA66}
+	EndGlobalSection
+EndGlobal
