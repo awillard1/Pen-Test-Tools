@@ -1,4 +1,5 @@
 import argparse
+import os
 
 leet_dict = {
 	'a': ['a','A','/-\\', '/\\', '4', '@'],
@@ -110,6 +111,8 @@ if __name__ == '__main__':
         parser.print_help()
         print("\n[-] Please specify a word (-o) for the filename to save the rule to.\n")
         exit()
+    else:
+        outfile = args.out
         
     if args.file:
         file = args.file
@@ -120,6 +123,5 @@ if __name__ == '__main__':
         	words = fh.read().splitlines()
 
     if args.word:
-        outfile = args.out
         words = [args.word]
     main()
