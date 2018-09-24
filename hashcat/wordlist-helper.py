@@ -1,5 +1,6 @@
 import argparse
 import re
+import sys
 
 def decode_hex(s):
     idx1 = s.index("[")+1
@@ -16,50 +17,54 @@ def convert_data(data):
     print(decoded)
 
 def convert_file():
-    print("Begin convert of HEX for JTR and wordlist for usage with rules")
+    print("[*] Begin convert of HEX for JTR and wordlist for usage with rules")
     data_out = []
     try:
         for line in lines:
-            if 'HEX' not in line:
+            if not line.startswith('HEX['):
                 data_out.append(line)
                 continue
             decoded = decode_hex(line)
             while True:
                 decoded = decode_hex(decoded)
-                if 'HEX' not in decoded:
+                if not line.startswith('HEX['):
                     break
             data_out.append(decoded)
     finally:
-        wordlist=[]
+        words=[]
         password_list=[]
-        print("Generating unique list of a-zA-Z...")
-        for item in data_out:
-            stripped = re.sub(r'[^a-zA-Z]+', '', item)
-            if lower_items:
-                stripped = stripped.lower()
-            if not stripped in wordlist:
-                wordlist.append(stripped)
-        print("Generating passwords to save...")
-        for item in data_out:
-            if not item in password_list:
-                password_list.append(item)
-
+        print("[*] Processing {} words.".format(len(data_out)))
+        print("[*] Changing all words to lowercase...")
+        words = [word.lower() for word in data_out]
+        print("[*] Removing numbers and special characters...")
+        words = [re.sub(r'[^a-z]+', '', word) for word in words]
+        print("[*] Removing duplicate words...")
+        words = list(set(words))
+        print("[*] Generating passwords to save from hashcat...")
+        password_list = list(set(data_out))
         create_password_file(password_list)
-        create_wordlist_file(wordlist)
+        create_wordlist_file(words)
         call_complete()
+        
 def call_complete():
-    print("Conversion complete")
+    print("[*] Conversion complete")
 
+#Creates file with all passwords including those with
+#the characters escaped by hashcat
 def create_password_file(password_list):
-    print("Saving password list...")
+    print("[*] Saving password list...")
     fh =  open(outfile, 'w')      
     for item in password_list:
-        fh.write(item + '\n')
+        try:
+            fh.write(item + '\n')
+        except:
+            pass
     fh.close()
 
+#Creates a stripped wordlist for use with rules
 def create_wordlist_file(wordlist):
-    print("Saving worlist...")
-    fh = open(outfile + "lw.lst",'w')
+    print("[*] Saving worlist...")
+    fh = open(outfile + "wl.lst",'w')
     for item in wordlist:
         fh.write(item+'\n')
     fh.close()
@@ -82,10 +87,9 @@ if __name__ == '__main__':
     if args.password_list and args.out:
         outfile = args.out
         lower_items = True
-        lines = open(args.password_list).read().splitlines()
+        print("[*] Attempting to open hashcat export")
+        lines = open(args.password_list, encoding="utf8", errors='ignore').read().splitlines()
     else:
         parser.print_help()
         exit()
     main()
-
-    
