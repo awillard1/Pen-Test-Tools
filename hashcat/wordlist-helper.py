@@ -3,7 +3,6 @@ import re
 import sys
 
 def decode_hex(s):
-    print(s)
     idx1 = s.index("[")+1
     idx2 = len(s)-1
     hexdata = s[idx1:idx2]
@@ -13,6 +12,7 @@ def convert_data(data):
     while data.startswith('$HEX['):
         data = decode_hex(data)
     return data
+
 def convert_file():
     print("[*] Begin convert of HEX for JTR and wordlist for usage with rules")
     data_out = []
