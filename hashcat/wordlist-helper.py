@@ -25,7 +25,6 @@ def convert_file():
                 data_out.append(line)
             else:
                 decoded = convert_data(line)
-                print(decoded)
                 data_out.append(decoded)
     finally:
         words=[]
