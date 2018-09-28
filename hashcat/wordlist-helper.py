@@ -12,7 +12,7 @@ def convert_data(data):
     decoded = decode_hex(data)
     while True:
         decoded = decode_hex(decoded)
-        if 'HEX' not in decoded:
+        if '$HEX[' not in decoded:
             break
     print(decoded)
 
@@ -21,13 +21,13 @@ def convert_file():
     data_out = []
     try:
         for line in lines:
-            if not line.startswith('HEX['):
+            if not line.startswith('$HEX['):
                 data_out.append(line)
                 continue
             decoded = decode_hex(line)
             while True:
                 decoded = decode_hex(decoded)
-                if not line.startswith('HEX['):
+                if not line.startswith('$HEX['):
                     break
             data_out.append(decoded)
     finally:
