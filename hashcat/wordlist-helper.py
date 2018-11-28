@@ -75,7 +75,7 @@ if __name__ == '__main__':
     print("\\\/\\/ordlist-helper 0.1")
     print("__________________________________\n\n")
     parser = argparse.ArgumentParser()
-    parser.add_argument("-pl", "--password_list", help="specify file of hashcat hashes")
+    parser.add_argument("-pl", "--password_list", help="specify the password plaintext file")
     parser.add_argument("-o", "--out", help="output file name")
 
     args = parser.parse_args()
