@@ -46,7 +46,7 @@ def get_certificate(hostname, port):
 
         return HostInfo(cert=crypto_cert, peername=peername, hostname=hostname)
     except Exception as e: 
-        print(e)
+        print('''» {hostname} « … ERROR : {error}\r\n'''.format(hostname=hostname,error=str(e)))
         return None
 
 def get_alt_names(cert):
