@@ -2,6 +2,8 @@
 # requires a recent enough python with idna support in socket
 # pyopenssl, cryptography and idna
 # derived from https://gist.github.com/gdamjan/55a8b9eec6cf7b771f92021d93b87b2c
+# usage sslexpiry.py -p 443 -f /mnt/d/data/yourhosts.txt
+# usage sslexpiry.py -p 443 -s www.YOURSITE.com
 
 from OpenSSL import SSL
 from cryptography import x509
