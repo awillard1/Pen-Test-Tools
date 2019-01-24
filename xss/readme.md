@@ -12,7 +12,7 @@ These information shall only be used to expand knowledge and not for causing mal
 
 Linux filenames and uploads
 ==============
-This has been a trick I have used for years. When I am lazy, I find my trust file
+This has been a trick I have used for years. When I am lazy, I find my trusty file
 ```html
 <img src=a onerror=prompt()>.pdf
 ```
