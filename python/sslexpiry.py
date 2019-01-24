@@ -5,12 +5,10 @@
 # usage sslexpiry.py -p 443 -f /mnt/d/data/yourhosts.txt
 # usage sslexpiry.py -p 443 -s www.YOURSITE.com
 
+import argparse, idna, datetime
 from OpenSSL import SSL
 from cryptography import x509
 from cryptography.x509.oid import NameOID
-import argparse
-import idna, datetime
-
 from socket import socket
 from collections import namedtuple
 
@@ -34,7 +32,6 @@ def get_certificate(hostname, port):
         ctx = SSL.Context(SSL.SSLv23_METHOD) # most compatible
         ctx.check_hostname = False
         ctx.verify_mode = SSL.VERIFY_NONE
-
         sock_ssl = SSL.Connection(ctx, sock)
         sock_ssl.set_connect_state()
         sock_ssl.set_tlsext_host_name(hostname_idna)
@@ -43,7 +40,6 @@ def get_certificate(hostname, port):
         crypto_cert = cert.to_cryptography()
         sock_ssl.close()
         sock.close()
-
         return HostInfo(cert=crypto_cert, peername=peername, hostname=hostname)
     except Exception as e: 
         print('''» {hostname} « … ERROR : {error}\r\n'''.format(hostname=hostname,error=str(e)))
@@ -70,7 +66,6 @@ def get_issuer(cert):
     except x509.ExtensionNotFound:
         return None
 
-
 def print_basic_info(hostinfo):
     try:
         s = '''» {hostname} « … {peername}
@@ -88,7 +83,7 @@ def print_basic_info(hostinfo):
                 issuer=get_issuer(hostinfo.cert),
                 notbefore=hostinfo.cert.not_valid_before,
                 notafter=hostinfo.cert.not_valid_after,
-				expired=ssl_expires_in(hostinfo.cert.not_valid_after)
+                expired=ssl_expires_in(hostinfo.cert.not_valid_after)
         )
         print(s)
     except:
@@ -106,7 +101,7 @@ def ssl_expires_in(not_valid_after, buffer_days=14):
     remaining = ssl_valid_time_remaining(not_valid_after)
     # if the cert expires in less than two weeks, we should reissue it
     if remaining < datetime.timedelta(days=0):
-        # cert has already expired - uhoh!
+        # cert has expired
         raise AlreadyExpired("Cert expired %s days ago" % remaining.days)
     elif remaining < datetime.timedelta(days=buffer_days):
         # expires sooner than the buffer
@@ -137,11 +132,12 @@ if __name__ == '__main__':
     host_port = int(args.port)
     HOSTS=[]
     if args.host:
-        host_name = args.host
         #Get alternate names from the certificate to process
+        host_name = args.host
         hostdata = get_certificate(host_name,host_port)
         HOSTS = load_hosts(get_alt_names(hostdata.cert),host_port)
     if args.filename:
+        #Get hostnames from a file to process
         file_name = args.filename
         with open(file_name) as f:
             content = f.readlines()
