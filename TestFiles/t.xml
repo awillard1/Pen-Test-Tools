@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Wizard SYSTEM "../wizard.dtd">
+<Wizard>
+	<Title>Username Recovery Wizard</Title>
+	<ClassPackage>com.edifecs.cdesk.ui.wizard.usernameRecovery</ClassPackage>
+	<JSPDir>/content/wizards/usernameRecovery</JSPDir>
+	<StartScreenID>1</StartScreenID>
+	<LogonRequired>false</LogonRequired>
+	<Screens>
+		<Screen>
+			<ID>1</ID>
+			<Width>500</Width>
+			<Caption>[Wizard.Title]: 1 of 2</Caption>
+			<ScreenImageLeft>/content/wizards/usernameRecovery/wizard_55x54.gif</ScreenImageLeft>
+			<ScreenHandler>UsernameRecovery_1_Handler</ScreenHandler>
+			<JSPName>wizSite4_UsernameRecovery_1</JSPName>
+			<Behavior>
+				<Cancel><![CDATA[ActionID=Logon]]></Cancel>
+				<Next><![CDATA[ActionID=52&WizardAction=4]]></Next>
+			</Behavior>
+		</Screen>
+		<Screen>
+			<ID>2</ID>
+			<Width>500</Width>
+			<Caption>[Wizard.Title]: 2 of 2</Caption>
+			<ScreenImageLeft>/content/wizards/usernameRecovery/wizard_55x54.gif</ScreenImageLeft>
+			<JSPName>wizSite4_UsernameRecovery_2</JSPName>
+			<IsLastScreen>true</IsLastScreen>
+			<Behavior>
+				<Previous><![CDATA[ActionID=52&WizardAction=3]]></Previous>
+				<Finish><![CDATA[ActionID=Logon]]></Finish>
+			</Behavior>
+		</Screen>
+		<Screen>
+			<ID>no_users</ID>
+			<Width>500</Width>
+			<Caption>[Wizard.Title]: 2 of 2</Caption>
+			<ScreenImageLeft>/content/wizards/usernameRecovery/wizard_55x54.gif</ScreenImageLeft>
+			<JSPName>wizSite4_UsernameRecovery_no_users</JSPName>
+			<IsLastScreen>true</IsLastScreen>
+			<Behavior>
+				<Previous><![CDATA[ActionID=52&WizardAction=3]]></Previous>
+				<Finish><![CDATA[ActionID=Logon]]></Finish>
+			</Behavior>
+		</Screen>
+	</Screens>
+</Wizard>
