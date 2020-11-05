@@ -3,7 +3,7 @@
 __author__ = 'Jake Miller (@LaconicWolf)...Written for Adam'
 __date__ = '20180921'
 __version__ = '0.01'
-__description__ = """Extracts the plain passwords from a hashcat or jtr pot file. Cleans them if specified."""
+__description__ = """Extracts the plain passwords from a hashcat or jtr pot file. Cleans them if specified. Latin-1 issues resolved."""
 
 import argparse
 import re
