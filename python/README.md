@@ -1,4 +1,4 @@
-# random_char_url.py
+# random_char_url.py and async_random_char_url.py
 ## USAGE: 
 
 * u - url with the value that needs to be replaced
