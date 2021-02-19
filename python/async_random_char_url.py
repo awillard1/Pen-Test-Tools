@@ -1,7 +1,6 @@
 import string
 import random
 import argparse
-import ssl
 import asyncio
 import aiohttp
 import aiohttp.connector
