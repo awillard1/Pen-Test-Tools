@@ -14,8 +14,6 @@ def main():
         ssl._create_default_https_context = _create_unverified_https_context
 
     print("###Beginning Random String Attack on URL")
-    print(maxlen)
-    print(n)
     for x in range(0, maxlen):
         try:
             res = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k = n))
