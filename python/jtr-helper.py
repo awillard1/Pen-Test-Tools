@@ -96,7 +96,7 @@ if __name__ == '__main__':
         hashFile = args.hashes
         if (args.recursive == "r" and "/*" in args.wordlist):
             isWordlists = True
-        if (args.recursive != "r" and "/*" in args.wordlist):
+        elif (args.recursive != "r" and "/*" in args.wordlist):
             print("You must specify a wordlist")
             exit()
         else:
