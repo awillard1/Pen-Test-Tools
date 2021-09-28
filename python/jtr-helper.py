@@ -30,7 +30,13 @@ def readConf():
                 ruleList.append(rule)
                 i = i + 1
     
-
+def loopCrack(rule):
+    for root, dirs, files in os.walk("/mnt/d/data/wordlists/"):
+        for file in files:
+            wordlist = root + "/" +file
+            print("Loading: " + wordlist)
+            crackpwds(rule, wordlist)
+            
 def createRuleList():
     readConf()
     print("\r\nIf you want to run all the rules listed, enter * and press enter")
@@ -42,22 +48,31 @@ def createRuleList():
             for ruleNumber in listNumberRule:
                 rule = ruleList[int(ruleNumber)]
                 print(rule + " ruleset will be used")
-                crackpwds(rule)
+                if (isWordlists):
+                    loopCrack(rule)
+                else:
+                    crackpwds(rule, wordlist)
         except:
             print("unable to split and run jtr")
             exit();    
     elif (val == "*"):
         for r in ruleList:
             print("Rule: " + r)
-            crackpwds(r)
+            if (isWordlists):
+                loopCrack(r)
+            else:
+                crackpwds(r,wordlist)
     elif (int(val)):
         rule = ruleList[int(val)] 
         print(rule + " ruleset will be used")
-        crackpwds(rule)
+        if (isWordlists):
+            loopCrack(rule)
+        else:
+            crackpwds(rule, wordlist)
     else:
         exit()
 
-def crackpwds(rule):
+def crackpwds(rule, wordlist):
     subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork, shell = True)
 
 def main():
@@ -70,14 +85,22 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--format", help="specify the jtr hash format")
     parser.add_argument("-w", "--wordlist", help="specify the file with wordlist")
+    parser.add_argument("-r", "--recursive", help="used with wordlists if a directory is defined: -w /wordlistDIR/*")
     parser.add_argument("-hash", "--hashes", help="specify the file with wordlist")
     
     args = parser.parse_args()
     
-    if args.format and args.wordlist and args.hashes:
+    if args.format and args.wordlist and args.hashes and args.recursive:
         hashFormat=args.format
         wordlist = args.wordlist
         hashFile = args.hashes
+        if (args.recursive == "r" and "/*" in args.wordlist):
+            isWordlists = True
+        if (args.recursive != "r" and "/*" in args.wordlist):
+            print("You must specify a wordlist")
+            exit()
+        else:
+            isWordlists = False
         ruleList = []
     else:
         parser.print_help()
