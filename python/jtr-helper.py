@@ -26,7 +26,7 @@ def readConf():
             match = re.match(r"^\[List.Rules.(.*)\].*$", line)
             if match:
                 rule = match.group(1)
-                print("["+str(i)+"]"+rule)
+                print("["+str(i)+"] "+rule)
                 ruleList.append(rule)
                 i = i + 1
     
