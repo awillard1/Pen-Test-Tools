@@ -13,6 +13,12 @@ python3 /mnt/d/data/scripts/python/random_char_url.py -u https://localhost/sadf 
 python3 /mnt/d/data/scripts/python/random_char_url.py -u https://localhost/sadf -r sadf -cnt 3 -vl 7 -pr 127.0.0.1:8080
 ```
 
+Loop wordlists
 ```
-python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w /mnt/d/data/wordlists/hc6pot2.lst -hash "/mnt/d/data/hashes/*"
+ python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w "/mnt/d/data/wordlists/*" -r r -hash "/mnt/d/data/hashes/*"
+```
+
+Use 1 wordlist
+```
+python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w /mnt/d/data/wordlists/hc6pot2.lst -hash "/mnt/d/data/hashes/*" -r n
 ```
