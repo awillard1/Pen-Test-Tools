@@ -2,6 +2,7 @@ import os
 import re
 import argparse
 import subprocess
+import signal
 
 ######## BEGIN CONFIGURATION ########
 johnConf = "/home/awillard/src/john/run/john.conf"
@@ -12,6 +13,9 @@ johnFork = "12"
 
 def readConf():
     i = 0
+    if (os.path.exists(johnConf) == False):
+        print("Unable to locate john.conf: " + johnConf + "\r\nExiting")
+        exit()
     jtrconf = open(johnConf, "r")
     for line in jtrconf:
         match = re.match(r"^\[List.Rules.(.*)\].*$", line)
@@ -31,30 +35,33 @@ def readConf():
                 i = i + 1
     
 def loopCrack(rule):
-    for root, dirs, files in os.walk("/mnt/d/data/wordlists/"):
+    global wordlist
+    for root, dirs, files in os.walk(wordlist.replace("*","")):
         for file in files:
             wordlist = root + file
             print("Loading: " + wordlist)
             crackpwds(rule, wordlist)
-            
+
 def createRuleList():
     readConf()
     print("\r\nIf you want to run all the rules listed, enter * and press enter")
     print("If you want to run some rules, comma separate the numbers and press enter\r\n")
     val = input("Enter the number of the rule to run: ")    
     if ("," in val):
-        try:
-            listNumberRule = val.split(",")
-            for ruleNumber in listNumberRule:
+        #try:
+        listNumberRule = val.split(",")
+        for ruleNumber in listNumberRule:
+            print(ruleNumber.isnumeric())
+            if (ruleNumber.isnumeric() and int(ruleNumber) >= 0 and int(ruleNumber) <= len(ruleList)):
                 rule = ruleList[int(ruleNumber)]
                 print(rule + " ruleset will be used")
                 if (isWordlists):
                     loopCrack(rule)
                 else:
                     crackpwds(rule, wordlist)
-        except:
-            print("unable to split and run jtr")
-            exit();    
+        #except:
+        print("unable to split and run jtr")
+        exit();    
     elif (val == "*"):
         for r in ruleList:
             print("Rule: " + r)
@@ -62,7 +69,7 @@ def createRuleList():
                 loopCrack(r)
             else:
                 crackpwds(r,wordlist)
-    elif (int(val)):
+    elif (val.isnumeric() and int(val)>=0):
         rule = ruleList[int(val)] 
         print(rule + " ruleset will be used")
         if (isWordlists):
@@ -76,9 +83,35 @@ def crackpwds(rule, wordlist):
     subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork, shell = True)
 
 def main():
+    verifyPaths()
     createRuleList()
+    
+def verifyPaths():
+    if (isWordlists):
+        wordlistDir = wordlist.replace("*","")
+        if (os.path.exists(wordlistDir) == False):
+            print("The wordlist directory could not be found:" + wordlistDir + "\r\nExiting")
+            exit()
+    else:
+         if (os.path.exists(wordlist) == False):
+            print("The wordlist could not be found:" + wordlist + "\r\nExiting")
+            exit()
+    
+    if (os.path.exists(hashFile.replace("*","")) == False):
+        print("Hash file(s) could not be found:" + hashFile + "\r\nExiting")
+        exit()
+
+def handler(signal_received, frame):
+    try:
+        print("\r\n\r\nAborting current john wordlist/rule\r\nIf another wordlist is available, cracking will continue.\r\n")
+    except:
+        exit(0)
 
 if __name__ == '__main__':
+    #Signal implementation is really ugly:
+    #Use ctrl+c during cracking to skip a wordlist/rule combination
+    #hold ctrl+c during cracking to kill jtr and this script
+    signal.signal(signal.SIGINT, handler)
     print("__________________________________")
     print("JTR HELPER 0.1")
     print("__________________________________\n\n")
@@ -89,7 +122,10 @@ if __name__ == '__main__':
     parser.add_argument("-hash", "--hashes", help="specify the file with wordlist")
     
     args = parser.parse_args()
-    
+    if (int(johnFork) > os.cpu_count()):
+        print("Please set variable johnFork to a smaller value. Max value is " + str(os.cpu_count()))
+        exit()
+
     if args.format and args.wordlist and args.hashes and args.recursive:
         hashFormat=args.format
         wordlist = args.wordlist
