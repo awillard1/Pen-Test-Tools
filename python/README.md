@@ -15,10 +15,10 @@ python3 /mnt/d/data/scripts/python/random_char_url.py -u https://localhost/sadf 
 
 Loop wordlists
 ```
- python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w "/mnt/d/data/wordlists/*" -r r -hash "/mnt/d/data/hashes/*"
+ python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w "/mnt/d/data/wordlists/*" -r -hash "/mnt/d/data/hashes/*"
 ```
 
 Use 1 wordlist
 ```
-python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w /mnt/d/data/wordlists/hc6pot2.lst -hash "/mnt/d/data/hashes/*" -r n
+python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w /mnt/d/data/wordlists/hc6pot2.lst -hash "/mnt/d/data/hashes/*"
 ```
