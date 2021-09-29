@@ -33,7 +33,7 @@ def readConf():
 def loopCrack(rule):
     for root, dirs, files in os.walk("/mnt/d/data/wordlists/"):
         for file in files:
-            wordlist = root + "/" +file
+            wordlist = root + file
             print("Loading: " + wordlist)
             crackpwds(rule, wordlist)
             
