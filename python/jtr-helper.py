@@ -108,7 +108,8 @@ def handler(signal_received, frame):
         exit(0)
 
 if __name__ == '__main__':
-    #Signal implementation is really ugly:
+    #Signal implementation is really ugly, need to revist
+    #Use ctrl+c prior to cracking and you will have to hit enter to kill the app 
     #Use ctrl+c during cracking to skip a wordlist/rule combination
     #hold ctrl+c during cracking to kill jtr and this script
     signal.signal(signal.SIGINT, handler)
@@ -118,7 +119,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--format", help="specify the jtr hash format")
     parser.add_argument("-w", "--wordlist", help="specify the file with wordlist")
-    parser.add_argument("-r", "--recursive", help="used with wordlists if a directory is defined: -w /wordlistDIR/*")
+    parser.add_argument("-r", "--recursive", help="used with wordlists if a directory is defined: -w /wordlistDIR/*",action='store_const', const=True)
     parser.add_argument("-hash", "--hashes", help="specify the file with wordlist")
     
     args = parser.parse_args()
@@ -126,15 +127,16 @@ if __name__ == '__main__':
         print("Please set variable johnFork to a smaller value. Max value is " + str(os.cpu_count()))
         exit()
 
-    if args.format and args.wordlist and args.hashes and args.recursive:
+    if args.format and args.wordlist and args.hashes:
         hashFormat=args.format
         wordlist = args.wordlist
         hashFile = args.hashes
-        if (args.recursive == "r" and "/*" in args.wordlist):
-            isWordlists = True
-        elif (args.recursive != "r" and "/*" in args.wordlist):
-            print("You must specify a wordlist")
+
+        if (args.recursive is None and "/*" in args.wordlist):
+            print("You must specify a wordlist file. \r\n* can not be used with out the -r option for wordlist.\r\nPlease correct: " + args.wordlist)
             exit()
+        elif (args.recursive and "/*" in args.wordlist):
+            isWordlists = True
         else:
             isWordlists = False
         ruleList = []
