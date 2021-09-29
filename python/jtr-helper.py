@@ -8,7 +8,7 @@ import signal
 johnConf = "/home/awillard/src/john/run/john.conf"
 johnLocalConf = "/home/awillard/src/john/run/john-local.conf"
 jtrLocation = "/home/awillard/src/john/run/john"
-johnFork = "12"
+johnFork = "16"
 ######## END CONFIGURATION   ######## 
 
 def readConf():
@@ -36,9 +36,14 @@ def readConf():
     
 def loopCrack(rule):
     global wordlist
-    for root, dirs, files in os.walk(wordlist.replace("*","")):
+    wordlistdir = wordlist.replace("*","")
+    for root, dirs, files in os.walk(wordlistdir):
         for file in files:
-            wordlist = root + file
+            if (root == wordlistdir):
+                wordlist = root + file
+            else:
+                wordlist = root +"/"+ file
+            
             print("Loading: " + wordlist)
             crackpwds(rule, wordlist)
 
@@ -69,7 +74,7 @@ def createRuleList():
                 loopCrack(r)
             else:
                 crackpwds(r,wordlist)
-    elif (val.isnumeric() and int(val)>=0):
+    elif (val.isnumeric() and int(val)>=0 and int(val) <= len(ruleList)):
         rule = ruleList[int(val)] 
         print(rule + " ruleset will be used")
         if (isWordlists):
