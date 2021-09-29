@@ -80,6 +80,8 @@ def createRuleList():
         exit()
 
 def crackpwds(rule, wordlist):
+    global isRunning
+    isRunning = True
     subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork, shell = True)
 
 def main():
@@ -103,13 +105,15 @@ def verifyPaths():
 
 def handler(signal_received, frame):
     try:
-        print("\r\n\r\nAborting current john wordlist/rule\r\nIf another wordlist is available, cracking will continue.\r\n")
+        if (isRunning):
+            print("\r\n\r\nAborting current john wordlist/rule\r\nIf another wordlist is available, cracking will continue.\r\n")
+        else:
+            exit(0)
     except:
         exit(0)
 
 if __name__ == '__main__':
     #Signal implementation is really ugly, need to revist
-    #Use ctrl+c prior to cracking and you will have to hit enter to kill the app 
     #Use ctrl+c during cracking to skip a wordlist/rule combination
     #hold ctrl+c during cracking to kill jtr and this script
     signal.signal(signal.SIGINT, handler)
