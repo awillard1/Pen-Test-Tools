@@ -82,7 +82,7 @@ def createRuleList():
 def crackpwds(rule, wordlist):
     global isRunning
     isRunning = True
-    subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork, shell = True)
+    subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
 
 def main():
     verifyPaths()
