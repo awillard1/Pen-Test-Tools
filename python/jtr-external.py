@@ -75,8 +75,10 @@ def crackpwds(rule):
     global isRunning
     isRunning = True
     
-    #global johnFork
-    subprocess.call(jtrLocation + " " + hashFile + " --format:" + hashFormat + " --external:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
+    if (int(johnFork) <= 1):
+        subprocess.call(jtrLocation + " " + hashFile + " --format:" + hashFormat + " --external:" + rule + " --force-tty", shell = True)
+    else:
+        subprocess.call(jtrLocation + " " + hashFile + " --format:" + hashFormat + " --external:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
 
 def main():
     setJohnFork()

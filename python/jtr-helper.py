@@ -97,8 +97,10 @@ def crackpwds(rule, wordlist):
     global isRunning
     isRunning = True
     
-    #global johnFork
-    subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
+    if (int(johnFork) <= 1):
+        subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --force-tty", shell = True)
+    else:
+        subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
 
 def main():
     setJohnFork()
