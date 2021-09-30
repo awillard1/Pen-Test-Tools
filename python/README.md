@@ -22,3 +22,8 @@ Use 1 wordlist
 ```
 python3.9 /mnt/d/data/scripts/python/jtr-helper.py  -f nt -w /mnt/d/data/wordlists/hc6pot2.lst -hash "/mnt/d/data/hashes/*"
 ```
+
+Not as useful but if you don't know the external rules, this will help you with that
+```
+python3.9 /mnt/d/data/scripts/python/jtr-external.py  -f nt -hash "/mnt/d/data/hashes/*"
+```
