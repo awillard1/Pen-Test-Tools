@@ -28,7 +28,7 @@ def readConf():
         exit()
     jtrconf = open(johnConf, "r")
     for line in jtrconf:
-        match = re.match(r"^\[List.Rules.(.*)\].*$", line)
+        match = re.match(r"^\[List.External\:(.*)\].*$", line)
         if match:
             rule = match.group(1)
             print("["+str(i)+"] "+rule)
@@ -37,25 +37,12 @@ def readConf():
     if (os.path.exists(johnLocalConf)):
         jtrlocalconf = open(johnLocalConf,"r")
         for line in jtrlocalconf:
-            match = re.match(r"^\[List.Rules.(.*)\].*$", line)
+            match = re.match(r"^\[List.External:(.*)\].*$", line)
             if match:
                 rule = match.group(1)
                 print("["+str(i)+"] "+rule)
                 ruleList.append(rule)
                 i = i + 1
-    
-def loopCrack(rule):
-    global wordlist
-    wordlistdir = wordlist.replace("*","")
-    for root, dirs, files in os.walk(wordlistdir):
-        for file in files:
-            if (root == wordlistdir):
-                wordlist = root + file
-            else:
-                wordlist = root +"/"+ file
-            
-            print("Loading: " + wordlist)
-            crackpwds(rule, wordlist)
 
 def createRuleList():
     readConf()
@@ -69,36 +56,27 @@ def createRuleList():
             if (ruleNumber.isnumeric() and int(ruleNumber) >= 0 and int(ruleNumber) <= len(ruleList)):
                 rule = ruleList[int(ruleNumber)]
                 print(rule + " ruleset will be used")
-                if (isWordlists):
-                    loopCrack(rule)
-                else:
-                    crackpwds(rule, wordlist)
+                crackpwds(rule)
         #except:
         print("unable to split and run jtr")
         exit();    
     elif (val == "*"):
         for r in ruleList:
             print("Rule: " + r)
-            if (isWordlists):
-                loopCrack(r)
-            else:
-                crackpwds(r,wordlist)
+            crackpwds(r)
     elif (val.isnumeric() and int(val)>=0 and int(val) <= len(ruleList)):
         rule = ruleList[int(val)] 
         print(rule + " ruleset will be used")
-        if (isWordlists):
-            loopCrack(rule)
-        else:
-            crackpwds(rule, wordlist)
+        crackpwds(rule)
     else:
         exit()
 
-def crackpwds(rule, wordlist):
+def crackpwds(rule):
     global isRunning
     isRunning = True
     
     #global johnFork
-    subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
+    subprocess.call(jtrLocation + " " + hashFile + " --format:" + hashFormat + " --external:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
 
 def main():
     setJohnFork()
@@ -106,16 +84,6 @@ def main():
     createRuleList()
     
 def verifyPaths():
-    if (isWordlists):
-        wordlistDir = wordlist.replace("*","")
-        if (os.path.exists(wordlistDir) == False):
-            print("The wordlist directory could not be found:" + wordlistDir + "\r\nExiting")
-            exit()
-    else:
-         if (os.path.exists(wordlist) == False):
-            print("The wordlist could not be found:" + wordlist + "\r\nExiting")
-            exit()
-    
     if (os.path.exists(hashFile.replace("*","")) == False):
         print("Hash file(s) could not be found:" + hashFile + "\r\nExiting")
         exit()
@@ -123,7 +91,7 @@ def verifyPaths():
 def handler(signal_received, frame):
     try:
         if (isRunning):
-            print("\r\n\r\nAborting current john wordlist/rule\r\nIf another wordlist is available, cracking will continue.\r\n")
+            print("\r\n\r\nAborting current john external rule\r\nIf another external rule is available, cracking will continue.\r\n")
         else:
             exit(0)
     except:
@@ -135,27 +103,16 @@ if __name__ == '__main__':
     #hold ctrl+c during cracking to kill jtr and this script
     signal.signal(signal.SIGINT, handler)
     print("__________________________________")
-    print("JTR HELPER 0.1")
+    print("JTR External 0.1")
     print("__________________________________\n\n")
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--format", help="specify the jtr hash format")
-    parser.add_argument("-w", "--wordlist", help="specify the file with wordlist")
-    parser.add_argument("-r", "--recursive", help="used with wordlists if a directory is defined: -w /wordlistDIR/*",action='store_const', const=True)
     parser.add_argument("-hash", "--hashes", help="specify the file with hashes")
     
     args = parser.parse_args()
-    if args.format and args.wordlist and args.hashes:
+    if args.format and args.hashes:
         hashFormat=args.format
-        wordlist = args.wordlist
         hashFile = args.hashes
-
-        if (args.recursive is None and "/*" in args.wordlist):
-            print("You must specify a wordlist file. \r\n* can not be used with out the -r option for wordlist.\r\nPlease correct: " + args.wordlist)
-            exit()
-        elif (args.recursive and "/*" in args.wordlist):
-            isWordlists = True
-        else:
-            isWordlists = False
         ruleList = []
     else:
         parser.print_help()
