@@ -8,8 +8,18 @@ import signal
 johnConf = "/home/awillard/src/john/run/john.conf"
 johnLocalConf = "/home/awillard/src/john/run/john-local.conf"
 jtrLocation = "/home/awillard/src/john/run/john"
-johnFork = "16"
 ######## END CONFIGURATION   ######## 
+
+def setJohnFork():
+    global johnFork
+    johnFork = input("Enter the --fork value for John (1 to " + str(os.cpu_count()) + "): ")    
+
+    if (johnFork.isnumeric() == False):
+        print("--fork was not numeric. Please set --fork to a value between 1 and " + str(os.cpu_count()))
+        exit()
+    elif (int(johnFork) < 1 or int(johnFork) > os.cpu_count()):
+        print("Please set --fork to a value between 1 and " + str(os.cpu_count()))
+        exit()
 
 def readConf():
     i = 0
@@ -87,9 +97,12 @@ def createRuleList():
 def crackpwds(rule, wordlist):
     global isRunning
     isRunning = True
+    
+    #global johnFork
     subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
 
 def main():
+    setJohnFork()
     verifyPaths()
     createRuleList()
     
@@ -132,10 +145,6 @@ if __name__ == '__main__':
     parser.add_argument("-hash", "--hashes", help="specify the file with wordlist")
     
     args = parser.parse_args()
-    if (int(johnFork) > os.cpu_count()):
-        print("Please set variable johnFork to a smaller value. Max value is " + str(os.cpu_count()))
-        exit()
-
     if args.format and args.wordlist and args.hashes:
         hashFormat=args.format
         wordlist = args.wordlist
