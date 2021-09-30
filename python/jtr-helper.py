@@ -66,7 +66,6 @@ def createRuleList():
         #try:
         listNumberRule = val.split(",")
         for ruleNumber in listNumberRule:
-            print(ruleNumber.isnumeric())
             if (ruleNumber.isnumeric() and int(ruleNumber) >= 0 and int(ruleNumber) <= len(ruleList)):
                 rule = ruleList[int(ruleNumber)]
                 print(rule + " ruleset will be used")
