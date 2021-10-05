@@ -65,19 +65,19 @@ def createRuleList():
     print("If you want to run some rules, comma separate the numbers and press enter\r\n")
     val = input("Enter the number of the rule to run: ")    
     if ("," in val):
-        #try:
-        listNumberRule = val.split(",")
-        for ruleNumber in listNumberRule:
-            if (ruleNumber.isnumeric() and int(ruleNumber) >= 0 and int(ruleNumber) <= len(ruleList)):
-                rule = ruleList[int(ruleNumber)]
-                print(rule + " ruleset will be used")
-                if (isWordlists):
-                    loopCrack(rule)
-                else:
-                    crackpwds(rule, wordlist)
-        #except:
-        print("unable to split and run jtr")
-        exit();    
+        try:
+            listNumberRule = val.split(",")
+            for ruleNumber in listNumberRule:
+                if (ruleNumber.isnumeric() and int(ruleNumber) >= 0 and int(ruleNumber) <= len(ruleList)):
+                    rule = ruleList[int(ruleNumber)]
+                    print(rule + " ruleset will be used")
+                    if (isWordlists):
+                        loopCrack(rule)
+                    else:
+                        crackpwds(rule, wordlist)
+        except:
+            print("unable to split and run jtr")
+            exit();    
     elif (val == "*"):
         for r in ruleList:
             print("Rule: " + r)
