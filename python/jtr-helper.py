@@ -51,7 +51,6 @@ def loopCrack(rule):
     wordlistdir = wordlistDir.replace("*","")
     for root, dirs, files in os.walk(wordlistdir):
         for file in files:
-            print(file)
             if (root == wordlistdir):
                 wordlist = root + file
             else:
