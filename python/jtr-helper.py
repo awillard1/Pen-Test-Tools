@@ -48,10 +48,10 @@ def readConf():
     ruleList.append("korelogic")
     
 def loopCrack(rule):
-    global wordlist
-    wordlistdir = wordlist.replace("*","")
+    wordlistdir = wordlistDir.replace("*","")
     for root, dirs, files in os.walk(wordlistdir):
         for file in files:
+            print(file)
             if (root == wordlistdir):
                 wordlist = root + file
             else:
@@ -111,6 +111,7 @@ def main():
     createRuleList()
     
 def verifyPaths():
+    global wordlistDir
     if (isWordlists):
         wordlistDir = wordlist.replace("*","")
         if (os.path.exists(wordlistDir) == False):
