@@ -43,6 +43,9 @@ def readConf():
                 print("["+str(i)+"] "+rule)
                 ruleList.append(rule)
                 i = i + 1
+    #AddKorelogic
+    print("["+str(i)+"] korelogic")
+    ruleList.append("korelogic")
     
 def loopCrack(rule):
     global wordlist
