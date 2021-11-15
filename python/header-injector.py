@@ -41,31 +41,32 @@ def headersList():
 def injectHeaders(url, cookies):
     _headers = headersList()
     print("\nPayload to be passed:\n" + headerPayload)
-    s = requests.Session()
-    user_agent = get_random_useragent()
-    s.headers['User-Agent'] = user_agent
-    s.proxies['http'] = _proxy
-    s.proxies['https'] = _proxy
-    print("\nSend Initial Request - TODO use for comparison\n")
-    r1 = requests.get(url, cookies=cookies, verify=False)
-    print("\nSend 1 header in each request.\n")
-    for h in _headers:
-        hdrs = { h : headerPayload }
-        r1 = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
-    
-    print("\nSend 1 massive request\n")
-    allheaders = {}
-    allheaders["hack"]="me"
-    for h in _headers: 
-        s = h.lower()
-        if s == "host":
-            print("Ignoring host header")
-        elif s == "content-length":
-            print("Ignorning content-length header")
-        else:
-            allheaders[h]=headerPayload
-    
-    r1 = requests.get(url, cookies=cookies, headers=allheaders, verify=False)
+    ua = get_random_useragent()
+    print("\nUsing the User-Agent:  " +ua)
+    with requests.Session() as s:
+        s.proxies['http'] = _proxy
+        s.proxies['https'] = _proxy
+        
+        print("\nSend Initial Request - TODO use for comparison\n")
+        r1 = requests.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
+        print("\nSend 1 header in each request.\n")
+        for h in _headers:
+            hdrs = {'User-Agent':ua, h : headerPayload }
+            r1 = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
+        
+        print("\nSend 1 massive request\n")
+        allheaders = {}
+        allheaders["hack"]="me"
+        for h in _headers: 
+            s = h.lower()
+            if s == "host":
+                print("Ignoring host header")
+            elif s == "content-length":
+                print("Ignorning content-length header")
+            else:
+                allheaders[h]=headerPayload
+        
+        r1 = requests.get(url, cookies=cookies, headers=allheaders, verify=False)
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
