@@ -25,7 +25,7 @@ Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT
 Accept-Encoding: gzip, deflate
 Accept-Language: en-US
 Accept: text/plain
-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+Authorization: Basic YWRtaW4lM0FhZG1pbg==
 Cache-Control: no-cache
 Content-Length: 348
 Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==

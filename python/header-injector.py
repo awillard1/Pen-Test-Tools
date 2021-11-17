@@ -65,6 +65,7 @@ def headersList(filename):
 def injectHeaders(url, cookies):
     _headers = headersList("/headers.txt")
     _loadedheaders = headersList("/headers-small.txt")
+    _payloads = headersList("/header-special.txt")
     print("\nPayload to be passed:\n" + headerPayload)
     ua = get_random_useragent()
     print("\nUsing the User-Agent:  " +ua)
@@ -76,8 +77,7 @@ def injectHeaders(url, cookies):
         print("\nSend Initial Request - TODO use for comparison\n")
         resp = requests.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
         baselineLen = len(resp.content)
-        print("Baseline Request - Status: " + str(baselineLen) + " - Content-Length: " + str(len(resp.content)) + "\n")
-        
+        print("Baseline Request - Status: " + str(resp.status_code) + " - Content-Length: " + str(baselineLen) + "\n")
         print("\nSend header key/value pair\n")
         for h in _loadedheaders:
             item = h.split(":",1)
@@ -85,6 +85,11 @@ def injectHeaders(url, cookies):
             resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
             result = process_response(resp, baselineLen)
             print(h + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + "\r")
+            for p in _payloads:
+                hdrs = {'User-Agent':ua, item[0].lstrip() : item[1].lstrip() + p }
+                resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
+                result = process_response(resp, baselineLen)
+                print(h + p + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + "\r")
         
         print("\nSend 1 header in each request.\n")
         for h in _headers:
@@ -92,8 +97,6 @@ def injectHeaders(url, cookies):
             resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
             result = process_response(resp, baselineLen)
             print(h + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + " - Contains Payload: " + str(result.isPayloadInBody) +"\r")
-        
-        
         
         print("\nSend 1 massive request\n")
         allheaders = {}

