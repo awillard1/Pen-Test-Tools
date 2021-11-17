@@ -55,15 +55,16 @@ def get_random_useragent():
     rand_num = random.randrange(1, (len(ua_dict) + 1))
     return ua_dict[rand_num]
 
-def headersList():
+def headersList(filename):
     items = []
-    with open(dir + "/headers.txt", "r") as f:
+    with open(dir + filename, "r") as f:
         for line in f:
             items.append(line.rstrip('\n'))
     return items
 
 def injectHeaders(url, cookies):
-    _headers = headersList()
+    _headers = headersList("/headers.txt")
+    _loadedheaders = headersList("/headers-small.txt")
     print("\nPayload to be passed:\n" + headerPayload)
     ua = get_random_useragent()
     print("\nUsing the User-Agent:  " +ua)
@@ -76,15 +77,24 @@ def injectHeaders(url, cookies):
         resp = requests.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
         baselineLen = len(resp.content)
         print("Baseline Request - Status: " + str(baselineLen) + " - Content-Length: " + str(len(resp.content)) + "\n")
+        
+        print("\nSend header key/value pair\n")
+        for h in _loadedheaders:
+            item = h.split(":",1)
+            hdrs = {'User-Agent':ua, item[0].lstrip() : item[1].lstrip() }
+            resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
+            result = process_response(resp, baselineLen)
+            print(h + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + "\r")
+        
         print("\nSend 1 header in each request.\n")
         for h in _headers:
             hdrs = {'User-Agent':ua, h : headerPayload }
             resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
             result = process_response(resp, baselineLen)
-            difstr=""
-            if result.isLenDifferent:
-                difstr = "*"
             print(h + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + " - Contains Payload: " + str(result.isPayloadInBody) +"\r")
+        
+        
+        
         print("\nSend 1 massive request\n")
         allheaders = {}
 
