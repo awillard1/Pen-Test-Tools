@@ -25,6 +25,6 @@ class tokenGenerate:
         return self.token
 
     def getBearerAuth(self):
-        data = self.getToken()
+        self.getToken()
         return {"Authorization": self.json_data["token_type"] + " " + self.json_data["access_token"]}
 
