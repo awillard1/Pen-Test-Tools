@@ -22,6 +22,9 @@ class tokenGenerate:
             self.token = data
             self.time_expired = datetime.datetime.now() + datetime.timedelta(0,(int(expiresin)-100)) 
 
+        return self.token
+
+    def getBearerAuth(self):
+        data = self.getToken()
         return {"Authorization": self.json_data["token_type"] + " " + self.json_data["access_token"]}
-       
 
