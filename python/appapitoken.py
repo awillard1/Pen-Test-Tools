@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-import requests
-import json
 import datetime
+import json
+import requests
 
 class tokenGenerate:
     def __init__(self, url="", payload=""):
