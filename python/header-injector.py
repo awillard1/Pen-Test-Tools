@@ -75,7 +75,8 @@ def injectHeaders(url, cookies):
         s.proxies['https'] = _proxy
         
         print("\nSend Initial Request - TODO use for comparison\n")
-        resp = requests.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
+        resp = s.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
+        resp = s.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
         duration = str(resp.elapsed.total_seconds())
         baselineLen = len(resp.content)
         print("Baseline Request - Status: " + str(resp.status_code) + " - Content-Length: " + str(baselineLen) + "\n")
@@ -83,13 +84,13 @@ def injectHeaders(url, cookies):
         for h in _loadedheaders:
             item = h.split(":",1)
             hdrs = {'User-Agent':ua, item[0].lstrip() : item[1].lstrip() }
-            resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
+            resp = s.get(url, cookies=cookies,headers=hdrs, verify=False)
             duration = str(resp.elapsed.total_seconds())
             result = process_response(resp, baselineLen)
             print(h + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + " - Duration: "+ duration +  "\r")
             for p in _payloads:
                 hdrs = {'User-Agent':ua, item[0].lstrip() : item[1].lstrip() + p }
-                resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
+                resp = s.get(url, cookies=cookies,headers=hdrs, verify=False)
                 duration = str(resp.elapsed.total_seconds())
                 result = process_response(resp, baselineLen)
                 print(h + p + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + " - Duration: "+ duration + "\r")
@@ -97,7 +98,7 @@ def injectHeaders(url, cookies):
         print("\nSend 1 header in each request.\n")
         for h in _headers:
             hdrs = {'User-Agent':ua, h : headerPayload }
-            resp = requests.get(url, cookies=cookies,headers=hdrs, verify=False)
+            resp = s.get(url, cookies=cookies,headers=hdrs, verify=False)
             result = process_response(resp, baselineLen)
             duration = str(resp.elapsed.total_seconds())
             print(h + ": Status: " + result.status_code + " - Content-Length: " + ("","*")[result.isLenDifferent] + result.contentLength + " - Contains Payload: " + str(result.isPayloadInBody)  + " - Duration: "+ duration + "\r")
@@ -114,7 +115,7 @@ def injectHeaders(url, cookies):
             else:
                 allheaders[h]=headerPayload
         
-        resp = requests.get(url, cookies=cookies, headers=allheaders, verify=False)
+        resp = s.get(url, cookies=cookies, headers=allheaders, verify=False)
         result = process_response(resp, baselineLen)
         print("All Header Request - Status: " + result.status_code + " - Content-Length: " + result.contentLength + " - Contains Payload: " + str(result.isPayloadInBody)  + " - Duration: "+ duration + "\n")
   
