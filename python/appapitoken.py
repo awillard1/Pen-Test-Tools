@@ -9,7 +9,6 @@ class tokenGenerate:
         self.payload = payload
         self.headers = {"Content-Type": "application/x-www-form-urlencoded"}
         self.time_expired = datetime.datetime.now()
-        self.expired = False
         self.token = {}
         self.json_data = {}
 
