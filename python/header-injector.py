@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 import argparse
+import brotli
 from http.cookies import SimpleCookie
 import json
 import random
 import requests
 import os
+import gzip
+import zlib
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -19,21 +22,39 @@ class RespResult:
         self.contentLength = contentLength
         self.isLenDifferent = isLenDifferent
         self.isPayloadInBody = isPayloadInBody
-        
+    
+def decode_content_body(data, encoding):
+    if encoding == 'identity':
+        text = data
+    elif encoding in ('gzip', 'x-gzip'):
+        text = gzip.decompress(data)
+    elif encoding == 'deflate':
+        try:
+            text = zlib.decompress(data)
+        except zlib.error:
+            text = zlib.decompress(data, -zlib.MAX_WBITS)
+    elif encoding == 'br':
+        text = brotli.decompress(data)
+    else:
+        raise Exception("Unknown Content-Encoding: %s" % encoding)
+    return text  
+ 
 def process_response(resp, baselineLen):
     retval = RespResult()
-    if baselineLen != len(resp.content):
+    content_encoding = resp.headers.get('Content-Encoding', 'identity')
+    resp_content = decode_content_body(resp.content, content_encoding)
+    if baselineLen != len(resp_content):
         retval.isLenDifferent = True
     else:
         retval.isLenDifferent = False
     
-    if headerPayload in str(resp.content):
+    if headerPayload in str(resp_content):
         retval.isPayloadInBody = True
     else:
         retval.isPayloadInBody = False
         
     retval.status_code = str(resp.status_code)
-    retval.contentLength = str(len(resp.content))
+    retval.contentLength = str(len(resp_content))
     return retval 
   
 def get_random_useragent():
@@ -76,7 +97,6 @@ def injectHeaders(url, cookies):
         
         print("\nSend Initial Request - TODO use for comparison\n")
         resp = s.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
-        resp = s.get(url, headers={'User-Agent': ua},cookies=cookies, verify=False)
         duration = str(resp.elapsed.total_seconds())
         baselineLen = len(resp.content)
         print("Baseline Request - Status: " + str(resp.status_code) + " - Content-Length: " + str(baselineLen) + "\n")
@@ -107,10 +127,10 @@ def injectHeaders(url, cookies):
         allheaders = {}
 
         for h in _headers: 
-            _s = h.lower()
-            if _s == "host":
+            s = h.lower()
+            if s == "host":
                 print("Ignoring host header")
-            elif _s == "content-length":
+            elif s == "content-length":
                 print("Ignorning content-length header")
             else:
                 allheaders[h]=headerPayload
@@ -118,7 +138,6 @@ def injectHeaders(url, cookies):
         resp = s.get(url, cookies=cookies, headers=allheaders, verify=False)
         result = process_response(resp, baselineLen)
         print("All Header Request - Status: " + result.status_code + " - Content-Length: " + result.contentLength + " - Contains Payload: " + str(result.isPayloadInBody)  + " - Duration: "+ duration + "\n")
-  
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
