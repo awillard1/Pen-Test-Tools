@@ -127,10 +127,10 @@ def injectHeaders(url, cookies):
         allheaders = {}
 
         for h in _headers: 
-            s = h.lower()
-            if s == "host":
+            _s = h.lower()
+            if _s == "host":
                 print("Ignoring host header")
-            elif s == "content-length":
+            elif _s == "content-length":
                 print("Ignorning content-length header")
             else:
                 allheaders[h]=headerPayload
