@@ -96,7 +96,6 @@ def createRuleList():
         exit()
 
 def updateShell():
-    print(shFile)
     if (os.path.exists(shFile) == True):
         subprocess.call(shFile, shell = True)
 
