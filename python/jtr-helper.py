@@ -95,14 +95,21 @@ def createRuleList():
     else:
         exit()
 
+def updateShell():
+    print(shFile)
+    if (os.path.exists(shFile) == True):
+        subprocess.call(shFile, shell = True)
+
 def crackpwds(rule, wordlist):
     global isRunning
     isRunning = True
     
     if (int(johnFork) <= 1):
-        subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --force-tty", shell = True)
+        subprocess.call(jtrLocation + " " + hashFile + " --min-length:8 --max-length:30 --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --force-tty", shell = True)
     else:
-        subprocess.call(jtrLocation + " " + hashFile + " --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
+        subprocess.call(jtrLocation + " " + hashFile + " --min-length:8 --max-length:30 --wordlist:" + wordlist + " --format:" + hashFormat + " --rules:" + rule + " --fork:" + johnFork + " --force-tty", shell = True)
+     
+    updateShell()
 
 def main():
     setJohnFork()
@@ -147,12 +154,14 @@ if __name__ == '__main__':
     parser.add_argument("-w", "--wordlist", help="specify the file with wordlist")
     parser.add_argument("-r", "--recursive", help="used with wordlists if a directory is defined: -w /wordlistDIR/*",action='store_const', const=True)
     parser.add_argument("-hash", "--hashes", help="specify the file with hashes")
+    parser.add_argument("-s", "--script", help="specify the bash file to run after each rule runs")
     
     args = parser.parse_args()
     if args.format and args.wordlist and args.hashes:
         hashFormat=args.format
         wordlist = args.wordlist
         hashFile = args.hashes
+        shFile = args.script
 
         if (args.recursive is None and "/*" in args.wordlist):
             print("You must specify a wordlist file. \r\n* can not be used with out the -r option for wordlist.\r\nPlease correct: " + args.wordlist)
