@@ -60,6 +60,16 @@ def loopCrack(rule):
             crackpwds(rule, wordlist)
 
 def createRuleList():
+    #---------------------------------NOTE---------------------------------
+    #o3 and i3 have been added to the extrarules to exclude due to the 
+    #extreme length of time it takes to load and run these rules.
+    #Remove them from the array if you would like to include them in the
+    #use of the * option during rule selection
+    #
+    #Also note that the o1,i1,o2,i3 rules are removed because they are part
+    #of the oi rule set.
+    #---------------------------------NOTE---------------------------------
+    extrarules = ["best64","d3ad0ne","dive","InsidePro","T0XlC","rockyou-30000","specific","o","i","i1","i2","o1","o2","o3","i3"]
     readConf()
     print("\r\nIf you want to run all the rules listed, enter * and press enter")
     print("If you want to run some rules, comma separate the numbers and press enter\r\n")
@@ -80,11 +90,12 @@ def createRuleList():
             exit();    
     elif (val == "*"):
         for r in ruleList:
-            print("Rule: " + r)
-            if (isWordlists):
-                loopCrack(r)
-            else:
-                crackpwds(r,wordlist)
+            if (r not in extrarules):
+                print("Rule: " + r)
+                if (isWordlists):
+                    loopCrack(r)
+                else:
+                    crackpwds(r,wordlist)
     elif (val.isnumeric() and int(val)>=0 and int(val) <= len(ruleList)):
         rule = ruleList[int(val)] 
         print(rule + " ruleset will be used")
