@@ -96,8 +96,12 @@ def createRuleList():
         exit()
 
 def updateShell():
+    if (not shFile):
+        return
     if (os.path.exists(shFile) == True):
+        print("Updating Master Wordlist")
         subprocess.call(shFile, shell = True)
+        print("Update Completed")
 
 def crackpwds(rule, wordlist):
     global isRunning
@@ -111,6 +115,7 @@ def crackpwds(rule, wordlist):
     updateShell()
 
 def main():
+    updateShell()
     setJohnFork()
     verifyPaths()
     createRuleList()
