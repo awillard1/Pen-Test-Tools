@@ -16,9 +16,9 @@ def convert_file(rtype,isRevstr):
                 continue
             else:
                 if isRevstr:
-                    data = convert_data(rtype,line[::-1])
+                    data = convert_data(rtype,temp_str[::-1])
                 else:
-                    data = convert_data(rtype,line)
+                    data = convert_data(rtype,temp_str)
                 data_out.append(data)
     except:
         print("Error converting")
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     print("| |/ |/ / /_/ / /  / /_/ (__  )  / /_/ /_/ /  / / / / /_/ (__  ) / / / /__/ /_/ / /_   / /  / /_/ / /  __(__  ) ")
     print("|__/|__/\____/_/   \__,_/____/   \__/\____/  /_/ /_/\__,_/____/_/ /_/\___/\__,_/\__/  /_/   \__,_/_/\___/____/  ")
     print("    ")
-    print("\r\nwords to hashcat rules 0.4")
+    print("\r\nwords to hashcat rules 0.5")
     print("________________________________________________________________________________________________________________\n\n")
     parser = argparse.ArgumentParser()
     parser.add_argument("-w", "--words", help="specify the plaintext file containing words")
