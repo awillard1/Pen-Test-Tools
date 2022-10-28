@@ -9,7 +9,6 @@ def convert_data(rtype,word):
 
 def convert_file(rtype,isRevstr):
     print("[*] Begin convert to rules")
-    data_out = []
     try:
         for line in lines:
             temp_str = line.strip()
@@ -21,12 +20,9 @@ def convert_file(rtype,isRevstr):
                 else:
                     data = convert_data(rtype,line)
                 data_out.append(data)
-    finally:
-        word_list=[]
-        word_list = list(set(data_out))
-        create_rule_file(word_list)
-        call_complete()
-        
+    except:
+        print("Error converting")
+       
 def call_complete():
     print("[*] Conversion complete")
 
@@ -40,6 +36,12 @@ def create_rule_file(rule_list):
             pass
     fh.close()
 
+def save_file():
+    word_list=[]
+    word_list = list(set(data_out))
+    create_rule_file(word_list)
+    call_complete()
+
 def main():
     processed=False
     if isAppend:
@@ -50,6 +52,7 @@ def main():
         processed=True
     if processed==False:
         convert_file("$",False);
+    save_file()
     exit()
 
 if __name__ == '__main__':
@@ -60,7 +63,7 @@ if __name__ == '__main__':
     print("| |/ |/ / /_/ / /  / /_/ (__  )  / /_/ /_/ /  / / / / /_/ (__  ) / / / /__/ /_/ / /_   / /  / /_/ / /  __(__  ) ")
     print("|__/|__/\____/_/   \__,_/____/   \__/\____/  /_/ /_/\__,_/____/_/ /_/\___/\__,_/\__/  /_/   \__,_/_/\___/____/  ")
     print("    ")
-    print("\r\nwthr 0.01")
+    print("\r\nwthr 0.03")
     print("__________________________________\n\n")
     parser = argparse.ArgumentParser()
     parser.add_argument("-w", "--words", help="specify the plaintext file containing words")
@@ -69,6 +72,7 @@ if __name__ == '__main__':
     parser.add_argument("-p", "--prepend", help="prepend rule type",action='store_const', const=True)
 
     args = parser.parse_args()
+    data_out = []
     if args.words and args.out:
         outfile = args.out
         isPrepend = True if args.prepend is not None else False
