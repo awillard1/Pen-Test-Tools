@@ -47,15 +47,27 @@ def getWords(number):
         final_words += s
     return final_words
 
+def createOutFile():
+    count=lower
+    data=[]
+    while count<=upper:
+        data.append(getWords(count))
+        count=count+1;
+    fh =  open(outfile, 'w')      
+    for item in data:
+        try:
+            fh.write(item + '\n')
+        except:
+            pass
+    fh.close()
+    print("file saved at: " + outfile)
+    exit()
+
 def main():
     if upper<lower:
         print("***Error: The max value is less than the start value.")
         exit()
-    count=lower
-    while count<=upper:
-        print(getWords(count))
-        count=count+1;
-    exit()
+    createOutFile()
 
 if __name__ == '__main__':
     print("_________________________________________________")
@@ -65,18 +77,20 @@ if __name__ == '__main__':
     print(" / / / / /_/ / / / / / / /_/ /  __/ /  (__  ) ")
     print("/_/ /_/\__,_/_/ /_/ /_/_.___/\___/_/  /____/  ")
     print("                                              ")
-    print("\r\nnumbers to string rep 0.2")
+    print("\r\nnumbers to string rep 0.4")
     print("_________________________________________________\n\n")
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", "--upper", help="number to end with")
     parser.add_argument("-l", "--lower", help="number to start with")
+    parser.add_argument("-o", "--out", help="output rule file name - use .rule as the extension")
     args = parser.parse_args()
     if args.upper and args.lower:
-        if args.upper.isnumeric() and args.lower.isnumeric():
+        if args.upper.isnumeric() and args.lower.isnumeric() and args.out:
             upper = int(args.upper)
             lower = int(args.lower)
+            outfile = args.out
         else:
-            print("***Error: One of the values is not numeric")
+            print("***Error: Ensure numbers are numeric and an outfile has been assigned.")
             exit()
     else:
         parser.print_help()
