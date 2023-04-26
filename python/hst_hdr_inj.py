@@ -7,19 +7,19 @@ def main():
     tracker = " -H X-Tracking-Host:" + targetHost +" "
     userAgnt = " -H \"User-Agent:" + userAgent + "\" "
     print("###### Test 1 ######\r\n")
-    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -m 4 -H X-Tracking-Type:1 ' + tracker + ' --connect-timeout 4 -svk --http1.1 '+ userAgnt, shell=True)
+    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -L -m 4 -H X-Tracking-Type:1 ' + tracker + ' --connect-timeout 4 -svk --http1.1 '+ userAgnt, shell=True)
     print("###### Test 1a ######\r\n")
-    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -m 4 -L -H X-Tracking-Type:1a ' + tracker + ' --connect-timeout 4 -svk --http1.1 '+ userAgnt, shell=True)
+    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -L -m 4 -L -H X-Tracking-Type:1a ' + tracker + ' --connect-timeout 4 -svk --http1.1 '+ userAgnt, shell=True)
     print("\r\n\r\n\r\n###### Test 2 ######\r\n")
-    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -m 4 -H X-Tracking-Type:2 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
+    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -L -m 4 -H X-Tracking-Type:2 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
     print("\r\n\r\n\r\n###### Test 3 ######\r\n")
-    #subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':80 https://' + collabHost + proxy + ' -m 4  -H X-Tracking-Type:3 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
+    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':80 https://' + collabHost + proxy + ' -L -m 4  -H X-Tracking-Type:3 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
     print("\r\n\r\n\r\n###### Test 4 ######\r\n")
-    #subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -m 4 --haproxy-protocol -H X-Tracking-Type:4 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
+    subprocess.call('curl --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -L -m 4 --haproxy-protocol -H X-Tracking-Type:4 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
     print("\r\n\r\n\r\n###### Test 5 ######\r\n")
-    subprocess.call('curl --cipher DES-CBC3-SHA --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -m 4 -H X-Tracking-Type:5 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
+    subprocess.call('curl --cipher DES-CBC3-SHA --connect-to '+collabHost +':443:'+ targetHost+':443 https://' + collabHost + proxy + ' -L -m 4 -H X-Tracking-Type:5 ' + tracker + ' --connect-timeout 4 -svk --http1.1 -H X-Forwarded-For:'+collabHost + userAgnt, shell=True)
     print("\r\n\r\n\r\n###### Test 6 ######\r\n")
-    subprocess.call('curl -H "Host:' + collabHost + '" https://' + targetHost + proxy + ' -H X-Tracking-Type:6 ' + tracker + ' -m 4 --connect-timeout 4 -svk --http1.1 ' + userAgnt, shell=True)
+    subprocess.call('curl -H "Host:' + collabHost + '" https://' + targetHost + proxy + ' -H X-Tracking-Type:6 ' + tracker + ' -L -m 4 --connect-timeout 4 -svk --http1.1 ' + userAgnt, shell=True)
          
 
 if __name__ == '__main__':
