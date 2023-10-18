@@ -13,18 +13,13 @@ namespace DynamicCode
                 return src.IndexOf(value, StringComparison.InvariantCultureIgnoreCase) >= 0;
         }
 
-        internal static string Base64Decode(this string src, Encoding v)
-        {
+        internal static string Base64Decode(this string src) {
             string base64Text = string.Empty;
-            try
-            {
-                Base64Encoding.MemoryEncoding.MemoryBase64Decoder h = 
-                    new Base64Encoding.MemoryEncoding.MemoryBase64Decoder(src);
-                byte[] a = h.Decode();
-                base64Text = v.GetString(a);
+            try {
+                var b = Convert.FromBase64String(src);
+                base64Text = Encoding.UTF8.GetString(b);
             }
-            catch
-            {
+            catch {
                 base64Text = string.Empty;
             }
             return base64Text;

