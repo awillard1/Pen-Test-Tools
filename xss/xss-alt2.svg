@@ -7,8 +7,8 @@ x="10"
 y="10"
 width="800"
 height="800">
-<body  onload="document['writeln'](123)" xmlns="http://www.w3.org/1999/xhtml">
-asdfasdfasdf
+<body id="1" xmlns="http://www.w3.org/1999/xhtml">
+<script>document.getElementById("1").innerHTML="asdf123";</script>
 </body>
 </foreignObject>
 </svg>
