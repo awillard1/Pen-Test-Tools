@@ -3,6 +3,7 @@
     <foreignObject x="10" y="10" width="800" height="800">
       <body xmlns="http://www.w3.org/1999/xhtml">
   		<iframe src="file:///etc/passwd" style="width:400px;height:700px"></iframe>
+        <embed src="file:///etc/passwd" style="width:400px;height:700px"></embed>
       </body>
     </foreignObject>
   </g>
