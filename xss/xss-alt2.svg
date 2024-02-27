@@ -7,12 +7,8 @@ x="10"
 y="10"
 width="800"
 height="800">
-<body 
-xmlns="http://www.w3.org/1999/xhtml"
->
-<details
-open="open"
-ontoggle="(null||window['a'+'le'+'rt'])((null||document).domain)">asdfasdfasdf</details>
+<body  onload="document['writeln'](123) xmlns="http://www.w3.org/1999/xhtml">
+asdfasdfasdf
 </body>
 </foreignObject>
 </svg>
